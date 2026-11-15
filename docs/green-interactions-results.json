@@ -1,0 +1,62 @@
+{
+  "run_at": "2026-11-15T14:49:05.921Z",
+  "results": [
+    {
+      "name": "Header desktop sticky dan akun dari state",
+      "status": "LULUS"
+    },
+    {
+      "name": "Slider banyak materi, batas tombol, keyboard dan urutan",
+      "status": "LULUS"
+    },
+    {
+      "name": "Reward pertama transaksi70XP, total70, tiga badge baru",
+      "status": "LULUS"
+    },
+    {
+      "name": "Modal menahan fokus, Escape menutup dan fokus kembali ke materi",
+      "status": "LULUS"
+    },
+    {
+      "name": "Naik level menggunakan state nyata, badge lama tidak diulang",
+      "status": "LULUS"
+    },
+    {
+      "name": "Duplikat service tidak memberi reward/popup baru",
+      "status": "LULUS"
+    },
+    {
+      "name": "Refresh tidak membuka ulang reward, quest tetap3",
+      "status": "LULUS"
+    },
+    {
+      "name": "Viewport360/768/1440 header/nav sticky, tanpa overflow",
+      "status": "LULUS"
+    },
+    {
+      "name": "Nama panjang ellipsis tanpa overflow",
+      "status": "LULUS"
+    },
+    {
+      "name": "Satu dan nol kandidat ditangani",
+      "status": "LULUS"
+    },
+    {
+      "name": "Geser horizontal ponsel tidak memblokir halaman",
+      "status": "LULUS"
+    },
+    {
+      "name": "Reward ponsel muat dan header sesuai transaksi",
+      "status": "LULUS"
+    },
+    {
+      "name": "Logout menjaga progres dan kembali login",
+      "status": "LULUS"
+    },
+    {
+      "name": "Console bersih",
+      "status": "LULUS"
+    }
+  ],
+  "errors": []
+}

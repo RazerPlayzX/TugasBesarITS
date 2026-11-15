@@ -1,3 +1,4 @@
+import { showReward } from './reward-dialog.js';
 import { createDemoSession } from "./session.js";
 import { createNavigation } from "./navigation.js";
 import { renderDashboard } from "./dashboard.js";
@@ -50,7 +51,7 @@ function commit(newState) {
       ? ""
       : "Browser tidak mengizinkan penyimpanan. Progres tetap bisa digunakan pada sesi ini, tetapi tidak tersimpan setelah halaman ditutup.",
   );
-  renderState(state);
+  renderState(state, session.user());
   renderDashboard(state);
 }
 
@@ -312,6 +313,7 @@ byId("quest-content").addEventListener("submit", async (event) => {
   const version = ++completionVersion;
   form.querySelector('button[type="submit"]').disabled = true;
   try {
+    const beforeCompletion = state;
     const result = await recommendationService.complete(state, {
       course_id: form.dataset.courseId,
       score,
@@ -327,6 +329,7 @@ byId("quest-content").addEventListener("submit", async (event) => {
     );
     byId("feedback").tabIndex = -1;
     byId("feedback").focus();
+    if (!result.duplicate) showReward(beforeCompletion, result, form.dataset.courseId);
     // Hapus kandidat selesai tanpa mengubah daftar quest aktif.
     if (currentResult) {
       currentResult = {
@@ -379,7 +382,7 @@ byId("confirm-reset").addEventListener("click", () => {
   byId("demo-mode").value = "normal";
   renderValidation({});
   renderResults(null);
-  renderState(state);
+  renderState(state, session.user());
   renderDashboard(state);
   byId("next-recommendations").hidden = true;
   byId("next-recommendations").replaceChildren();
@@ -398,6 +401,7 @@ function updateSessionNotice() {
 
 byId("enter-demo").addEventListener("click", () => {
   session.enter();
+  renderState(state, session.user());
   updateSessionNotice();
   storageNotice(session.notice() || loaded.notice);
   navigation.go("beranda");
@@ -410,7 +414,7 @@ byId("exit-demo").addEventListener("click", () => {
   pendingQuest = null;
   setSearchBusy(false);
   renderResults(currentResult);
-  renderState(state);
+  renderState(state, session.user());
   renderDashboard(state);
   document.querySelector(".quest-replacement")?.remove();
   byId("next-recommendations").hidden = true;
@@ -421,7 +425,7 @@ byId("exit-demo").addEventListener("click", () => {
   navigation.go("login");
 });
 
-renderState(state);
+renderState(state, session.user());
 renderDashboard(state);
 renderResults(null);
 storageNotice(loaded.notice);

@@ -1,3 +1,5 @@
+import { DEMO_USER } from './session.js';
+import { createCarousel } from './carousel.js';
 import {
   BADGES,
   ACTIVITY_THRESHOLDS,
@@ -170,7 +172,7 @@ export function courseRows(
     row.append(number, body);
     list.append(row);
   });
-  return list;
+  return mode === "results" && courses.length ? createCarousel(list) : list;
 }
 
 function completionForm(course) {
@@ -302,7 +304,11 @@ export function adaptationRow(result) {
   return row;
 }
 
-export function renderState(state) {
+export function renderState(state, user = DEMO_USER) {
+  const account = user || DEMO_USER;
+  byId("account-name").textContent = account.name;
+  byId("account-name").title = account.name;
+  byId("account-avatar").textContent = account.name.trim().slice(0, 1).toUpperCase();
   const profile = profileFromState(state);
   const progress = questProgress(state.quest, profile.completedIds);
   const level = activityLevel(profile.xp);

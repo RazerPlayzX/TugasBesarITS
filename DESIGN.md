@@ -2,20 +2,24 @@
 name: Alur
 description: Penunjuk ruang kampus yang tenang, terbaca, dan terarah.
 colors:
-  ink: "#203e36"
-  muted: "#56675f"
-  forest: "#153f36"
-  forest-hover: "#24584a"
-  mint: "#e9f1e9"
-  lime: "#d8efb1"
-  ground: "#f5f7f3"
+  ink: "#20352b"
+  muted: "#52675b"
+  forest: "#153f2e"
+  forest-hover: "#20563d"
+  mint: "#edf6ee"
+  lime: "#d6edbf"
+  ground: "#f7f9f6"
   paper: "#ffffff"
-  line: "#dce3dc"
-  input-line: "#7b8b80"
+  line: "#dce6dd"
+  input-line: "#758b7c"
   yellow: "#f3edcf"
   error: "#a32b32"
   error-bg: "#fff1ef"
-  focus: "#2e6bba"
+  focus: "#285dba"
+  accent: "#237445"
+  on-dark: "#f3fcfd"
+  on-dark-muted: "#cce3d4"
+  dark-line: "#527760"
 typography:
   display:
     fontFamily: '"Manrope", "Segoe UI", sans-serif'
@@ -47,12 +51,12 @@ typography:
     lineHeight: 1.6
 rounded:
   radius: "14px"
-  control-radius: "8px"
+  control-radius: "10px"
   preset: "6px"
   tag: "5px"
 spacing:
   space-1: "4px"
-  space-2: "8px"
+  space-2: "10px"
   space-3: "12px"
   space-4: "16px"
   space-5: "24px"
@@ -209,7 +213,7 @@ Panel memakai `radius`, kontrol memakai `control-radius`; preset dan tag memilik
 - **Baris berurutan:** indeks lingkaran memandu pemindaian. Setelah selesai, indeks menjadi pinus dengan centang SVG; label status tetap hadir. Posisi dan urutan materi tetap stabil.
 - **Progres dan badge:** elemen progress setinggi 7px; label jumlah dan persentase menyertainya. Badge awal berborder, badge diperoleh memakai kuning dan label eksplisit.
 
-- **Aktivitas Beranda:** panel mint menggunakan keadaan kosong, aktif, dan selesai dari state belajar. Keadaan kosong menyediakan Cari Materi dan tiga langkah; keadaan aktif menampilkan progres serta materi berikutnya; keadaan selesai menyediakan Cari Materi dan tautan quest. XP, level aktivitas, dan badge berada dalam ringkasan pendukung berbentuk daftar definisi. Aktivitas terakhir hanya muncul saat ada riwayat, maksimum tiga penyelesaian terbaru, tanpa tanggal buatan.
+- **Aktivitas Beranda:** panel teal gelap menggunakan keadaan kosong, aktif, dan selesai dari state belajar. Keadaan kosong menyediakan Cari Materi dan tiga langkah; keadaan aktif menampilkan progres serta materi berikutnya; keadaan selesai menyediakan Cari Materi dan tautan quest. XP, level aktivitas, dan badge berada dalam ringkasan pendukung berbentuk daftar definisi. Aktivitas terakhir hanya muncul saat ada riwayat, maksimum tiga penyelesaian terbaru, tanpa tanggal buatan.
 - **Masuk demo:** satu aksi primary selebar area masuk; tanpa isian kredensial. Urutan isi adalah judul, penjelasan, label Mode demonstrasi, aksi, dan keterangan keterbatasan autentikasi. Label mode bukan eyebrow judul. Penanda sessionStorage hanya mengatur tampilan sesi; keluar tidak menghapus progres lokal.
 
 Transisi latar tombol dan isi progres memakai `duration` (160ms) dan `ease` pada kode. Spinner berputar linear 800ms. Preferensi reduced-motion mematikan animasi dan transisi. Sidecar menyediakan sebelas contoh HTML/CSS yang tetap terikat ke CSS custom properties proyek.
@@ -240,3 +244,29 @@ Capture 15 November 2026, browser Chrome, font lokal selesai dimuat, reduced-mot
 - Adaptasi: [Beranda 768px](docs/screenshots/beranda-progres-768.png), [Beranda 360px](docs/screenshots/beranda-progres-360.png), [menu disclosure dengan fokus keyboard](docs/screenshots/menu-360.png).
 
 Salinan paket reviewer berada di `.impeccable/review/dashboard/` dengan nama file yang sama. [Review extension](docs/review-dashboard.md) memisahkan temuan awal dan verdict perbaikannya; [hasil pengujian aktual](docs/pengujian-ui.md) mencatat lingkup runtime dan keterbatasannya.
+
+
+## Adaptasi referensi November 2026
+Palet presentasi kini teal gelap #153f2e, cyan aksi #237445 dan latar #f7f9f6. Referensi Dibimbing diperiksa melalui Playwright; rincian serta batas pengamatan di docs/adaptasi-referensi.md. Manrope lokal dan struktur aplikasi dipertahankan. Radius kontrol10px.
+
+
+## Adaptasi referensi visual ? 15 November 2026
+
+Referensi Dibimbing diperiksa langsung melalui Playwright CLI, tanpa mengirim formulir. Bidang pengantar teal gelap, area navigasi putih, aksen cyan, dan ritme katalog menjadi acuan. Alur mempertahankan rail navigasi serta font lokal Manrope agar struktur aplikasi dan keterbacaan tetap konsisten. Tidak memakai aset bermerek atau fitur webinar.
+
+Token tambahan: accent #237445 (cyan gelap untuk teks putih), on-dark #f3fcfd, on-dark-muted #cce3d4, dark-line #527760, content-width 1360px. Radius kontrol 10px. Dashboard activity memakai forest dengan teks terang dan tombol lime; kandidat materi memakai paper, border line, radius14px, padding24px dan gap16px. Pada ponsel padding kandidat20px16px. Selector diperbarui di tempat, tanpa stylesheet override baru. Login tetap dua bidang teal/putih; topbar putih memberi kontras navigasi.
+
+Bukti: [referensi desktop](docs/screenshots/acuan-desktop-aktual.png), [referensi ponsel](docs/screenshots/acuan-mobile-aktual.png), [katalog referensi](docs/screenshots/acuan-katalog-desktop.png). Hasil lokal terbaru: [Beranda desktop](docs/screenshots/beranda-progres-desktop.png), [ponsel](docs/screenshots/beranda-progres-360.png), [login](docs/screenshots/login-desktop.png), [materi](docs/screenshots/desktop-rekomendasi.png). Capture terbaru menggantikan bukti tampilan sebelumnya, bukan mengubah aturan bisnis.
+
+
+## Revisi hijau, navigasi, carousel, reward
+
+Keputusan terbaru menggantikan keterangan rail/disclosure sebelumnya: desktop memakai satu navbar horizontal putih sticky. Identitas di kiri, menu utama di tengah, akun dan Logout di kanan pada baris yang sama. Pada layar lebar, kolom samping seimbang membuat menu tepat di tengah viewport; tablet memadatkan ikon dan teks pendamping agar akun tidak bertabrakan dengan menu. Konteks halaman dan label demo berada di awal konten. Pada <=700px, nav yang sama menjadi bottom navigation empat tujuan (Beranda, Materi, Quest Saya, Pencapaian); header akun tetap di atas. Tidak ada dua nav duplikat. Nama berasal dari user sesi demo; truncation ellipsis dan title menjaga nama panjang. Logout langsung, tidak memakai dropdown. Header menampilkan level aktivitas dan total XP yang diturunkan dari history. Padding bawah100px ditambah safe-area; elemen form menggunakan scroll-margin.
+
+Palet utama forest #153f2e, accent #237445, mint #edf6ee, lime #d6edbf, ground #f7f9f6; fokus biru #285dba membedakan fokus keyboard. Warna status error tetap merah. Font lokal Manrope dipertahankan.
+
+Kandidat hasil saja memakai carousel scroll-snap: dua kartu desktop, 88% lebar pada ponsel, gap16px, tanpa auto-slide/infinite/duplikasi. Quest tetap daftar vertikal. Kontrol batas disabled; track fokus mendukung ArrowLeft/Right, tautan dan aksi tetap Tab. Informasi kartu mengalir tanpa tinggi tetap.
+
+Reward memakai dialog native showModal, backdrop inert, penahan Tab eksplisit, Escape/tombol tutup, dan fokus kembali ke judul materi yang sama karena render mengganti form pemicu. Animasi220ms dimatikan pada reduced-motion. Data dialog dihitung dari transaksi state sebelum/sesudah menggunakan profileFromState/activityLevel; tidak menyimpan atau menghitung reward baru. Duplikat tidak membuka dialog, refresh tidak replay. TotalXP dan badge baru berbeda jelas. Dialog maksimal520px, batas tinggi100dvh minus32px.
+
+Referensi learning center berhasil dibuka tetapi redirect guest=false ke guest=true. Hanya tampilan publik diamati; layout akun privat tidak diklaim terlihat. Bukti: docs/screenshots/learning-ref-desktop.png dan learning-ref-mobile.png. Adaptasi menggunakan pemisahan area kerja, header terang, dan susunan materi horizontal tanpa aset promosi.

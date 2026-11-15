@@ -2,7 +2,7 @@
 
 ## Lingkungan dan hasil aktual
 
-- Waktu run browser: 15 November 2026, 12:18:02 WIB.
+- Waktu run browser: 15 November 2026, 21:19:23 WIB.
 - Browser: Chrome/Chromium 157.0.8103.51, headless melalui Playwright pada Windows.
 - Server: `http://127.0.0.1:8000`, Python static HTTP server dengan document root `frontend`.
 - **33/33 uji regresi browser dan 21/21 uji login/Beranda lulus**. Jumlah console/page error terekam: 0.
@@ -13,7 +13,7 @@
 
 ## Login, Beranda, dan sesi
 
-Run tambahan: 2026-11-15T05:22:02.280Z (UTC), Chrome 157.0.8103.51. Data mesin: [dashboard-browser-results.json](dashboard-browser-results.json).
+Run tambahan: 2026-11-15T14:19:47.012Z (UTC), Chrome 157.0.8103.51. Data mesin: [dashboard-browser-results.json](dashboard-browser-results.json).
 
 | No. | Pengujian | Hasil | Catatan run |
 |---|---|---|---|
@@ -27,7 +27,7 @@ Run tambahan: 2026-11-15T05:22:02.280Z (UTC), Chrome 157.0.8103.51. Data mesin: 
 | 8 | Lanjutkan Belajar membuka quest dan fokus materi berikutnya | LULUS |  |
 | 9 | Penyelesaian memperbarui Beranda, XP, badge dan progres | LULUS |  |
 | 10 | Refresh dan navigasi mempertahankan state | LULUS |  |
-| 11 | Menu ponsel: buka, Escape, fokus kembali dan tutup saat navigasi | LULUS |  |
+| 11 | Navigasi bawah ponsel tetap terlihat dan menandai rute aktif | LULUS |  |
 | 12 | Semua halaman responsif 360, 540, 700, 701, 768, 1024, 1440 | LULUS |  |
 | 13 | Judul dan topik panjang tidak merusak Beranda ponsel | LULUS |  |
 | 14 | Keluar mempertahankan progres dan menghapus penanda sesi saja | LULUS |  |
@@ -148,3 +148,10 @@ Desktop quest/progres menunjukkan satu materi selesai dengan 70 XP. Screenshot p
 4. Selesaikan materi dengan nilai 59, 60, 80, dan 90 pada profil/quest yang sesuai; periksa aturan di dokumentasi langkah 5.
 5. Ubah ukuran jendela dan zoom 200%; periksa label, navigasi, form inline, dan semua tombol.
 6. Coba pembaca layar untuk label input, pengumuman hasil, status selesai, dan progress. Catat hasilnya sebagai uji tambahan, bukan klaim dari run ini.
+
+
+## Revisi hijau terbaru
+
+Revisi navbar 15 November 2026 diuji dengan Playwright CLI di Edge pada lebar 360, 540, 700, 701, 768, 1024, 1100, dan 1440px. Tidak ada overflow horizontal atau tabrakan menu dengan akun. Pada 1440px, pusat menu tepat di pusat viewport; akun berada dalam header yang sama. Header tetap di atas setelah scroll pada seluruh ukuran. Nama panjang diuji di 360, 768, dan 1440px. Navigasi ke Materi, refresh sesi, Logout, dan masuk kembali berhasil tanpa page error. Screenshot: [desktop](screenshots/navbar-1440.png), [ponsel](screenshots/navbar-360.png). Pemeriksaan ini tidak mengulang seluruh skenario aturan bisnis.
+
+Suite tambahan14/14 lulus; hasil pada [green-interactions-results.json](green-interactions-results.json). Rincian kasus, screenshot, dan batas inspeksi referensi/login terdapat pada [revisi-hijau.md](revisi-hijau.md). Navigasi disclosure lama telah diganti bottom navigation; 21 kasus dashboard terbaru memeriksa perilaku baru. Review terdahulu tidak dianggap verdict independen atas revisi ini.

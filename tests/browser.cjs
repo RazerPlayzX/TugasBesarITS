@@ -55,7 +55,7 @@ const output = path.join(ROOT, "docs/screenshots");
   async function navigate(view) {
     // Tunggu layout dan event media-query setelah pengujian mengubah viewport.
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-    if (await page.locator('#menu-toggle').isVisible() && !(await page.locator('#main-navigation').isVisible())) await page.locator('#menu-toggle').click();
+    if (await page.locator('#reward-dialog').isVisible()) await page.locator('#reward-return').click();
     await page.locator(`nav [data-view=${view}]`).click();
   }
   async function fill(

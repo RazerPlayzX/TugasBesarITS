@@ -1,3 +1,5 @@
+export const DEMO_USER = Object.freeze({ name: 'Pelajar demo' });
+
 export const SESSION_KEY = "alur.its.session.v1";
 
 // Penanda tampilan saja: tidak memberi identitas, otorisasi, atau keamanan.
@@ -20,6 +22,7 @@ export function createDemoSession(
   }
   return {
     isActive: () => active,
+    user: () => active ? DEMO_USER : null,
     notice: () => notice,
     enter() {
       active = true;

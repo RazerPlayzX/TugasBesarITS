@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-11-15T05:22:02.280Z",
+  "run_at": "2026-11-15T14:19:47.012Z",
   "browser": "157.0.8103.51",
   "results": [
     {
@@ -43,7 +43,7 @@
       "status": "LULUS"
     },
     {
-      "name": "Menu ponsel: buka, Escape, fokus kembali dan tutup saat navigasi",
+      "name": "Navigasi bawah ponsel tetap terlihat dan menandai rute aktif",
       "status": "LULUS"
     },
     {
@@ -95,7 +95,6 @@
     "docs/screenshots/beranda-kosong-desktop.png",
     "docs/screenshots/beranda-aktif-desktop.png",
     "docs/screenshots/beranda-progres-desktop.png",
-    "docs/screenshots/menu-360.png",
     "docs/screenshots/beranda-progres-360.png",
     "docs/screenshots/beranda-progres-768.png",
     "docs/screenshots/beranda-selesai-desktop.png"

@@ -8,16 +8,7 @@ const VIEWS = {
 };
 
 export function createNavigation(session) {
-  const mobile = window.matchMedia("(max-width: 700px)");
-  const toggle = byId("menu-toggle");
   const menu = byId("main-navigation");
-
-  function closeMenu(returnFocus = false) {
-    toggle.setAttribute("aria-expanded", "false");
-    menu.hidden = mobile.matches;
-    if (returnFocus) toggle.focus();
-  }
-
   function render() {
     const requested = location.hash.slice(1);
     const view = session.isActive()
@@ -29,7 +20,6 @@ export function createNavigation(session) {
     byId("login-view").hidden = view !== "login";
     byId("app-shell").hidden = view === "login";
     byId("skip-link").href = view === "login" ? "#login-main" : "#main";
-    closeMenu();
     Object.keys(VIEWS).forEach((name) => {
       byId(`view-${name}`).hidden = name !== view;
     });
@@ -51,22 +41,6 @@ export function createNavigation(session) {
     render();
   }
 
-  toggle.addEventListener("click", () => {
-    const open = toggle.getAttribute("aria-expanded") !== "true";
-    toggle.setAttribute("aria-expanded", String(open));
-    menu.hidden = !open;
-  });
-  document.addEventListener("keydown", (event) => {
-    if (
-      event.key === "Escape" &&
-      toggle.getAttribute("aria-expanded") === "true"
-    )
-      closeMenu(true);
-  });
-  mobile.addEventListener("change", () => {
-    const focusInMenu = menu.contains(document.activeElement);
-    closeMenu(mobile.matches && focusInMenu);
-  });
   // Intersepsi rute juga menangani klik tautan ke halaman yang sudah aktif.
   document.addEventListener("click", (event) => {
     const link = event.target.closest('a[href^="#"]');
@@ -94,6 +68,5 @@ export function createNavigation(session) {
     render();
   });
   window.addEventListener("popstate", render);
-  closeMenu();
   return { render, go };
 }

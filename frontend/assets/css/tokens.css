@@ -7,20 +7,20 @@
 }
 
 :root {
-  --ink: #203e36;
-  --muted: #56675f;
-  --forest: #153f36;
-  --forest-hover: #24584a;
-  --mint: #e9f1e9;
-  --lime: #d8efb1;
-  --ground: #f5f7f3;
+  --ink: #20352b;
+  --muted: #52675b;
+  --forest: #153f2e;
+  --forest-hover: #20563d;
+  --mint: #edf6ee;
+  --lime: #d6edbf;
+  --ground: #f7f9f6;
   --paper: #ffffff;
-  --line: #dce3dc;
-  --input-line: #7b8b80;
+  --line: #dce6dd;
+  --input-line: #758b7c;
   --yellow: #f3edcf;
   --error: #a32b32;
   --error-bg: #fff1ef;
-  --focus: #2e6bba;
+  --focus: #285dba;
   --font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-heading: "Manrope", "Segoe UI", sans-serif;
   --space-1: 4px;
@@ -31,7 +31,12 @@
   --space-6: 32px;
   --space-7: 48px;
   --radius: 14px;
-  --control-radius: 8px;
+  --control-radius: 10px;
+  --accent: #237445;
+  --on-dark: #f3fcfd;
+  --on-dark-muted: #cce3d4;
+  --dark-line: #527760;
+  --content-width: 1360px;
   --duration: 160ms;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }

@@ -106,3 +106,10 @@ Pengujian menggunakan Chrome yang terpasang. Pada Windows ini, set `$env:BROWSER
 Ganti adapter pada `recommendation-service.js` dengan Fetch API/JSON. Validasi ulang di server memakai Pydantic/JSON Schema. Server menjadi sumber kebenaran aturan dan state; jangan mempercayai XP dari browser. Pertahankan `course_id`, urutan matriks/model, dan normalisasi `normalisasi_teks.py`. Kontrak usulan dijelaskan di dokumentasi langkah 5.
 
 Nama tampilan dapat diubah di `frontend/index.html` dan judul halaman pada `navigation.js`. Token desain berada di `tokens.css`; tidak ada aset font eksternal atau dependensi UI yang harus diunduh saat aplikasi dibuka.
+
+
+## Revisi navigasi hijau dan reward
+
+Navigasi desktop kini horizontal/sticky; ponsel menggunakan header akun sticky dan navigasi bawah. Materi kandidat disajikan dalam slider yang bisa digeser, dengan tombol batas dan keyboard ArrowLeft/Right pada track. Quest tetap daftar tetap. Selesai materi menampilkan dialog reward dari transaksi nyata simulasi; Escape/Tutup/Kembali ke Quest menutupnya tanpa mengubah progres. Logout tetap menjaga progres lokal.
+
+Pengujian tambahan: `node tests/green-interactions.cjs` dengan PLAYWRIGHT_MODULE seperti di atas. [Catatan revisi dan batas pengujian](docs/revisi-hijau.md). Nama demo dikonfigurasi pada model user sesi di session.js, lalu dirender dari sesi yang sama. Tidak ada autentikasi nyata.

@@ -12,6 +12,8 @@
     <link rel="icon" href="assets/icons/mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/tokens.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="assets/css/navigation.css" />
+    <link rel="stylesheet" href="assets/css/interactions.css" />
     <script type="module" src="assets/js/app.js"></script>
   </head>
   <body>
@@ -81,24 +83,13 @@
       </main>
     </div>
     <div id="app-shell" hidden>
-      <aside class="sidebar">
+      <header class="sidebar">
         <a class="brand" href="#beranda" aria-label="Alur, halaman beranda">
           <img src="assets/icons/mark.svg" width="36" height="36" alt="" />
           <span
             >alur<span class="brand-caption">Ruang belajar adaptif</span></span
           >
         </a>
-        <button
-          id="menu-toggle"
-          class="menu-toggle"
-          type="button"
-          aria-controls="main-navigation"
-          aria-expanded="false"
-        >
-          <svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M4 6h16M4 12h16M4 18h16" /></svg
-          >Menu
-        </button>
         <nav id="main-navigation" aria-label="Navigasi utama">
           <a href="#beranda" data-view="beranda"
             ><svg aria-hidden="true" viewBox="0 0 24 24">
@@ -110,7 +101,7 @@
               <path
                 d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z"
               /></svg
-            >Rekomendasi Materi</a
+            >Materi</a
           >
           <a href="#quest" data-view="quest"
             ><svg aria-hidden="true" viewBox="0 0 24 24">
@@ -125,38 +116,15 @@
             >Pencapaian</a
           >
         </nav>
-        <div class="sidebar-note">
-          <span class="small-leaf" aria-hidden="true"
-            ><svg viewBox="0 0 24 24"><path d="M6 18 18 6M7 6h11v11" /></svg
-          ></span>
-          <p>Belajar satu per satu.<br />Bangun pemahamanmu.</p>
-          <span>Quest membantumu mencatat setiap materi yang selesai.</span>
+        <div class="topbar">
+        <div class="account-summary"><span class="avatar" id="account-avatar" aria-hidden="true"></span><div class="account-copy"><strong id="account-name"></strong><span class="mobile-demo-label">Mode demonstrasi</span><span><span id="sidebar-level"></span> &middot; <span id="sidebar-xp"></span></span></div></div>
+        <button id="exit-demo" class="button secondary" type="button">Logout<span class="sr-only"> mode demo</span></button>
         </div>
-        <div class="sidebar-profile">
-          <span class="avatar" aria-hidden="true">P</span>
-          <div>
-            <strong>Pelajar demo</strong
-            ><span id="sidebar-level">Level Aktivitas 1</span>
-          </div>
-          <span id="sidebar-xp">0 XP</span>
-        </div>
-        <button id="exit-demo" class="exit-demo" type="button">
-          Keluar mode demo<svg aria-hidden="true" viewBox="0 0 24 24">
-            <path d="M9 4H4v16h5m5-13 5 5-5 5m-6-5h11" />
-          </svg>
-        </button>
-      </aside>
+      </header>
 
       <div class="workspace">
-        <header class="topbar">
-          <span
-            >Ruang belajar <span aria-hidden="true">/</span>
-            <strong id="breadcrumb">Rekomendasi</strong></span
-          ><span class="demo-label"
-            ><span aria-hidden="true"></span>Mode demonstrasi</span
-          >
-        </header>
-        <main id="main" tabindex="-1">
+      <main id="main" tabindex="-1">
+          <div class="header-context"><strong id="breadcrumb">Beranda</strong><span class="demo-label">Mode demonstrasi</span></div>
           <div
             id="storage-notice"
             class="notice warning"
@@ -490,6 +458,12 @@
         </main>
       </div>
     </div>
+    <dialog id="reward-dialog" aria-labelledby="reward-title" aria-describedby="reward-description">
+      <div class="reward-heading"><h2 id="reward-title">Materi selesai!</h2><button type="button" id="reward-close" class="button secondary" aria-label="Tutup hadiah">Tutup</button></div>
+      <p id="reward-description">Pencapaian dari aktivitas simulasi yang baru kamu selesaikan.</p>
+      <p id="reward-earned" class="reward-earned"></p><dl id="reward-summary"></dl>
+      <div id="reward-badges"></div><button type="button" id="reward-return" class="button primary">Kembali ke Quest</button>
+    </dialog>
     <noscript
       >Aplikasi memerlukan JavaScript. Aktifkan JavaScript untuk mencoba mode
       demonstrasi.</noscript

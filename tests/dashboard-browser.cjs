@@ -28,7 +28,7 @@ const ROOT = path.resolve(__dirname, '..');
   async function navigate(view) {
     // Tunggu layout dan event media-query setelah pengujian mengubah viewport.
     await page.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
-    if (await page.locator('#menu-toggle').isVisible() && !(await page.locator('#main-navigation').isVisible())) await page.locator('#menu-toggle').click();
+    if (await page.locator('#reward-dialog').isVisible()) await page.locator('#reward-return').click();
     await page.locator(`nav [data-view=${view}]`).click();
     await page.locator(`#view-${view}`).waitFor({ state: 'visible' });
   }
@@ -124,23 +124,14 @@ const ROOT = path.resolve(__dirname, '..');
     assert.deepEqual(await state(), before);
     assert.match(await page.locator('#dashboard-summary').innerText(), /70 XP/);
   });
-  await check('Menu ponsel: buka, Escape, fokus kembali dan tutup saat navigasi', async () => {
-    await page.setViewportSize({ width: 360, height: 800 });
-    await page.locator('#main-navigation').waitFor({ state: 'hidden' });
-    assert.equal(await page.locator('#main-navigation').isVisible(), false);
-    await page.locator('#menu-toggle').focus();
-    await page.keyboard.press('Enter');
-    await page.keyboard.press('Tab');
-    assert.equal(await page.evaluate(() => document.activeElement.dataset.view), 'beranda');
-    await capture('menu-360');
-    await page.keyboard.press('Escape');
-    assert.equal(await page.evaluate(() => document.activeElement.id), 'menu-toggle');
-    assert.equal(await page.locator('#main-navigation').isVisible(), false);
+  await check('Navigasi bawah ponsel tetap terlihat dan menandai rute aktif', async () => {
+    await page.setViewportSize({width:360,height:800});
     await navigate('quest');
-    assert.equal(await page.locator('#main-navigation').isVisible(), false);
-    await page.setViewportSize({ width: 768, height: 900 });
-    await page.locator('#main-navigation').waitFor({ state: 'visible' });
     assert.equal(await page.locator('#main-navigation').isVisible(), true);
+    assert.equal(await page.locator('[data-view=quest]').getAttribute('aria-current'), 'page');
+    await page.evaluate(() => window.scrollTo(0,document.body.scrollHeight));
+    const rect = await page.locator('#main-navigation').boundingBox();
+    assert.ok(rect.y + rect.height <= 801);
   });
   await check('Semua halaman responsif 360, 540, 700, 701, 768, 1024, 1440', async () => {
     for (const width of [360, 540, 700, 701, 768, 1024, 1440]) {
@@ -189,6 +180,7 @@ const ROOT = path.resolve(__dirname, '..');
       await page.waitForFunction(count => JSON.parse(localStorage.getItem('alur.its.demo.v1')).history.length > count, before);
       // Rekomendasi berikutnya merupakan bagian operasi penyelesaian yang sama.
       await page.waitForFunction(() => !document.querySelector('#next-recommendations').textContent.includes('Menyiapkan'));
+      if (await page.locator('#reward-dialog').isVisible()) await page.locator('#reward-return').click();
     }
     await navigate('beranda');
     assert.equal(await page.locator('#dashboard-activity progress').getAttribute('value'), '100');
