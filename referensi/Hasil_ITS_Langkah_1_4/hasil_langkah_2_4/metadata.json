@@ -1,0 +1,12 @@
+{
+  "python": "3.13.18",
+  "pandas": "2.2.3",
+  "sklearn": "1.6.1",
+  "jumlah_kursus": 3687,
+  "fitur_tfidf": 20955,
+  "sumber": "MOOC.csv",
+  "sha256": "3ccf430e27917fb969acd06fd2616cbc7e8d1dc9fa02653f65d67e5e7d1128ae",
+  "nilai_kuis": "simulasi",
+  "status_validasi_pedagogis": "belum divalidasi pengajar",
+  "aturan_adaptasi": "nilai <60 turun satu level; 60–<80 tetap; >=80 naik satu level"
+}

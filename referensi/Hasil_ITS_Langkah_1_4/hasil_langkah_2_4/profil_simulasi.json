@@ -1,0 +1,20 @@
+{
+  "nama": "Alya",
+  "total_xp": 50,
+  "kursus_selesai": [
+    "MOOC-4b7b76de09323af9"
+  ],
+  "badges": [
+    "Learning Explorer",
+    "Smart Learner"
+  ],
+  "riwayat": [
+    {
+      "course_id": "MOOC-4b7b76de09323af9",
+      "topik": "python programming",
+      "nilai_kuis": 85.0,
+      "xp": 50,
+      "sumber_nilai": "simulasi"
+    }
+  ]
+}

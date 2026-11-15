@@ -1,0 +1,4 @@
+﻿course_id,Course Name,Difficulty Level,Course Rating,Course URL,Skor Cosine Similarity,Quest,Urutan,Selesai
+MOOC-4b7b76de09323af9,Python Programming Essentials,Beginner,4.8,https://www.coursera.org/learn/python-programming,0.673115521036587,Remedial,1,True
+MOOC-76e077bea20caef3,Python Basics,Beginner,4.8,https://www.coursera.org/learn/python-basics,0.579933617510045,Remedial,2,False
+MOOC-735e5df8e1f4c5e9,Compose and Program Music in Python using Earsketch,Beginner,4.4,https://www.coursera.org/learn/compose-program-music-in-python-using-earsketch,0.5559181166339155,Remedial,3,False

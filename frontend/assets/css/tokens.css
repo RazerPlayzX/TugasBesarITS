@@ -1,0 +1,37 @@
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-Variable.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --ink: #203e36;
+  --muted: #56675f;
+  --forest: #153f36;
+  --forest-hover: #24584a;
+  --mint: #e9f1e9;
+  --lime: #d8efb1;
+  --ground: #f5f7f3;
+  --paper: #ffffff;
+  --line: #dce3dc;
+  --input-line: #7b8b80;
+  --yellow: #f3edcf;
+  --error: #a32b32;
+  --error-bg: #fff1ef;
+  --focus: #2e6bba;
+  --font: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Manrope", "Segoe UI", sans-serif;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --radius: 14px;
+  --control-radius: 8px;
+  --duration: 160ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}

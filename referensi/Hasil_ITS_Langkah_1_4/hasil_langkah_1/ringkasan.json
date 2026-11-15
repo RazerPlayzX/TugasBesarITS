@@ -1,0 +1,29 @@
+{
+  "nama_file": "MOOC.csv",
+  "sha256": "3ccf430e27917fb969acd06fd2616cbc7e8d1dc9fa02653f65d67e5e7d1128ae",
+  "encoding_pembacaan": "cp1252",
+  "baris_mentah": 3785,
+  "kolom_asli": 7,
+  "url_unik_nonmissing": 3687,
+  "duplikat_penuh_setelah_pertama": 98,
+  "url_dengan_konflik_atribut": 0,
+  "missing_per_kolom": {
+    "Course Name": 0,
+    "University / Industry Partner Name": 0,
+    "Difficulty Level": 4,
+    "Course Rating": 208,
+    "Course URL": 0,
+    "Course Description": 8,
+    "all_skill": 15
+  },
+  "rating_nonnumerik_nonmissing": 82,
+  "dokumen_teks_lengkap": 3767,
+  "dokumen_minimal_satu_teks": 3785,
+  "status": "Langkah 1 saja; data mentah belum dibersihkan atau divektorisasi",
+  "provenans": "File dari kelompok; URL sumber unduhan, pembuat, tanggal pengumpulan dan lisensi belum diverifikasi",
+  "versi": {
+    "python": "3.13.18",
+    "pandas": "2.2.3",
+    "numpy": "2.4.6"
+  }
+}

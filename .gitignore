@@ -1,0 +1,5 @@
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+.impeccable/review/
+__pycache__/
+*.pyc

@@ -1,0 +1,8 @@
+﻿kolom,makna,peran_dalam_tema
+Course Name,Nama kursus,Teks utama untuk representasi konten
+University / Industry Partner Name,Institusi atau mitra penyedia,Metadata tampilan dan eksplorasi penyedia
+Difficulty Level,Kategori tingkat kesulitan,Calon filter; kategori perlu diverifikasi
+Course Rating,Rating kursus; terdapat nilai nonnumerik,"Metadata kualitas, bukan kemampuan siswa"
+Course URL,Tautan kursus,Calon kunci identitas dan tautan referensi
+Course Description,Deskripsi kursus,Sumber teks utama korpus
+all_skill,Gabungan keterampilan dan label topik,Sumber teks pendukung; pemisah belum baku

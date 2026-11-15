@@ -1,0 +1,24 @@
+﻿pengujian,hasil
+Normalisasi istilah teknis,LULUS
+Pemisah kata,LULUS
+Data asli tidak berubah,LULUS
+Urutan data dan matriks cocok,LULUS
+Nilai negatif ditolak,LULUS
+Nilai di atas 100 ditolak,LULUS
+Nilai NaN ditolak,LULUS
+Progres melebihi total ditolak,LULUS
+Progres kosong,LULUS
+Batas nilai 60,LULUS
+Batas nilai 80,LULUS
+XP nilai 90 dan materi selesai,LULUS
+Kueri kosong ditolak,LULUS
+Jumlah hasil nol ditolak,LULUS
+Indeks tidak valid ditolak,LULUS
+Kosakata tidak dikenal menghasilkan kosong,LULUS
+Kursus acuan dikecualikan,LULUS
+Target remedial Beginner,LULUS
+Target mastery Advanced,LULUS
+Ada kandidat uji remedial,LULUS
+Reward tidak berulang,LULUS
+Kursus selesai dikecualikan,LULUS
+Kursus di luar quest ditolak,LULUS

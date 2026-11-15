@@ -1,0 +1,172 @@
+{
+  "run_at": "2026-11-15T05:18:02.366Z",
+  "browser": "157.0.8103.51",
+  "results": [
+    {
+      "name": "Tampilan awal dan profil kosong",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Topik kosong dan ringkasan error terfokus",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Nilai kosong ditolak",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Nilai -1 ditolak",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Nilai 101 ditolak",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Nilai 0 valid dan tidak reload",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Batas adaptasi 59",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Batas adaptasi 60",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Batas adaptasi 79",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Batas adaptasi 80",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Tiga skenario dari sumber",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Kueri di luar skenario dijelaskan tanpa hasil palsu",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Loading deterministik dan tombol disabled",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Simulasi hasil kosong",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Simulasi error dan pemulihan Coba lagi",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Navigasi keyboard dan focus indicator",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Mulai quest dengan tiga materi tetap",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Tautan aman dan membuka materi tidak menyelesaikan",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Penyelesaian nilai 90: +70 XP, badge kumulatif, progres 1/3",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Penyelesaian berulang melalui service tidak menambah XP",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Rekomendasi berikutnya terpisah dari quest",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Pencarian baru dan pembatalan penggantian menjaga quest",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Konfirmasi penggantian mempertahankan XP",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Persistensi setelah reload",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Reset demo tidak menghapus data situs lain",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "JSON localStorage rusak ditangani",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Storage tidak tersedia: aplikasi tetap berfungsi",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Rating kosong, URL tidak aman, dan teks data tidak dieksekusi",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Pencarian lambat diselaraskan dengan penyelesaian terbaru",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Semua tautan internal dan aset lokal tersedia",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Responsif 320, 390, 768, 1024, 1440 tanpa overflow",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Ponsel: hasil, quest, form penyelesaian, dan progres",
+      "status": "LULUS",
+      "detail": ""
+    },
+    {
+      "name": "Reduced motion dan tidak ada console/page error",
+      "status": "LULUS",
+      "detail": ""
+    }
+  ],
+  "errors": []
+}

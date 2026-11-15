@@ -1,0 +1,103 @@
+{
+  "run_at": "2026-11-15T05:22:02.280Z",
+  "browser": "157.0.8103.51",
+  "results": [
+    {
+      "name": "Login awal jujur; tidak meminta kredensial",
+      "status": "LULUS"
+    },
+    {
+      "name": "Login responsif 360, 540, 768, 1024, 1440",
+      "status": "LULUS"
+    },
+    {
+      "name": "Keyboard masuk demo dan fokus konten",
+      "status": "LULUS"
+    },
+    {
+      "name": "Beranda kosong tidak mengarang aktivitas; CTA membuka rekomendasi",
+      "status": "LULUS"
+    },
+    {
+      "name": "Skip link memindahkan fokus tanpa mengganti halaman",
+      "status": "LULUS"
+    },
+    {
+      "name": "Submit ganda diabaikan selama pemuatan",
+      "status": "LULUS"
+    },
+    {
+      "name": "Beranda aktif memakai quest dan materi berikutnya yang sama",
+      "status": "LULUS"
+    },
+    {
+      "name": "Lanjutkan Belajar membuka quest dan fokus materi berikutnya",
+      "status": "LULUS"
+    },
+    {
+      "name": "Penyelesaian memperbarui Beranda, XP, badge dan progres",
+      "status": "LULUS"
+    },
+    {
+      "name": "Refresh dan navigasi mempertahankan state",
+      "status": "LULUS"
+    },
+    {
+      "name": "Menu ponsel: buka, Escape, fokus kembali dan tutup saat navigasi",
+      "status": "LULUS"
+    },
+    {
+      "name": "Semua halaman responsif 360, 540, 700, 701, 768, 1024, 1440",
+      "status": "LULUS"
+    },
+    {
+      "name": "Judul dan topik panjang tidak merusak Beranda ponsel",
+      "status": "LULUS"
+    },
+    {
+      "name": "Keluar mempertahankan progres dan menghapus penanda sesi saja",
+      "status": "LULUS"
+    },
+    {
+      "name": "Quest selesai: progres 100% dan CTA Cari Materi",
+      "status": "LULUS"
+    },
+    {
+      "name": "Reset dikonfirmasi; batal mempertahankan state, reset mengosongkan Beranda",
+      "status": "LULUS"
+    },
+    {
+      "name": "Keluar saat pencarian tertunda membatalkan pembaruan UI lama",
+      "status": "LULUS"
+    },
+    {
+      "name": "Keluar saat penyelesaian tertunda tidak memberi XP setelah sesi ditutup",
+      "status": "LULUS"
+    },
+    {
+      "name": "Sesi rusak memulihkan login dengan pesan",
+      "status": "LULUS"
+    },
+    {
+      "name": "sessionStorage diblokir: sesi memori berfungsi dengan penjelasan",
+      "status": "LULUS"
+    },
+    {
+      "name": "Tidak ada console/page error",
+      "status": "LULUS"
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "docs/screenshots/login-desktop.png",
+    "docs/screenshots/login-360.png",
+    "docs/screenshots/login-768.png",
+    "docs/screenshots/beranda-kosong-desktop.png",
+    "docs/screenshots/beranda-aktif-desktop.png",
+    "docs/screenshots/beranda-progres-desktop.png",
+    "docs/screenshots/menu-360.png",
+    "docs/screenshots/beranda-progres-360.png",
+    "docs/screenshots/beranda-progres-768.png",
+    "docs/screenshots/beranda-selesai-desktop.png"
+  ]
+}
