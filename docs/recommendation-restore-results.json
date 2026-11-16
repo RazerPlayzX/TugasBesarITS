@@ -1,0 +1,249 @@
+[
+  {
+    "suite": "desktop",
+    "checks": [
+      {
+        "name": "Refresh mempertahankan halaman quest",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest memulihkan kandidat pada kedua bagian",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest tidak mengubah XP/quest/progres",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest tidak memutar hadiah",
+        "passed": true
+      },
+      {
+        "name": "Refresh mempertahankan halaman beranda",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda memulihkan kandidat pada kedua bagian",
+        "passed": true
+      },
+      {
+        "name": "Urutan kandidat tetap setelah refresh",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda tidak mengubah XP/quest/progres",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda tidak memutar hadiah",
+        "passed": true
+      },
+      {
+        "name": "Nilai nol dan level quest dipakai saat restore",
+        "passed": true
+      },
+      {
+        "name": "Materi selesai dikecualikan",
+        "passed": true
+      },
+      {
+        "name": "Logout mengosongkan kandidat akun lama",
+        "passed": true
+      },
+      {
+        "name": "Login ulang memulihkan kandidat",
+        "passed": true
+      },
+      {
+        "name": "Gagal restore memberi pesan dan menjaga progres",
+        "passed": true
+      },
+      {
+        "name": "Kandidat restore dapat dimulai menjadi quest",
+        "passed": true
+      },
+      {
+        "name": "Quest pengganti belum selesai tidak memakai nilai quest lama",
+        "passed": true
+      },
+      {
+        "name": "Akun lain tidak melihat kandidat pengguna sebelumnya",
+        "passed": true
+      },
+      {
+        "name": "Tidak ada exception JavaScript",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "suite": "mobile",
+    "checks": [
+      {
+        "name": "Refresh mempertahankan halaman quest",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest memulihkan kandidat pada kedua bagian",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest tidak mengubah XP/quest/progres",
+        "passed": true
+      },
+      {
+        "name": "Refresh quest tidak memutar hadiah",
+        "passed": true
+      },
+      {
+        "name": "Refresh mempertahankan halaman beranda",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda memulihkan kandidat pada kedua bagian",
+        "passed": true
+      },
+      {
+        "name": "Urutan kandidat tetap setelah refresh",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda tidak mengubah XP/quest/progres",
+        "passed": true
+      },
+      {
+        "name": "Refresh beranda tidak memutar hadiah",
+        "passed": true
+      },
+      {
+        "name": "Nilai nol dan level quest dipakai saat restore",
+        "passed": true
+      },
+      {
+        "name": "Materi selesai dikecualikan",
+        "passed": true
+      },
+      {
+        "name": "Logout mengosongkan kandidat akun lama",
+        "passed": true
+      },
+      {
+        "name": "Login ulang memulihkan kandidat",
+        "passed": true
+      },
+      {
+        "name": "Gagal restore memberi pesan dan menjaga progres",
+        "passed": true
+      },
+      {
+        "name": "Kandidat restore dapat dimulai menjadi quest",
+        "passed": true
+      },
+      {
+        "name": "Quest pengganti belum selesai tidak memakai nilai quest lama",
+        "passed": true
+      },
+      {
+        "name": "Akun lain tidak melihat kandidat pengguna sebelumnya",
+        "passed": true
+      },
+      {
+        "name": "Tidak ada exception JavaScript",
+        "passed": true
+      }
+    ]
+  },
+  {
+    "suite": "regression",
+    "checks": [
+      {
+        "name": "Registrasi dan profil header",
+        "passed": true
+      },
+      {
+        "name": "Topik kosong",
+        "passed": true
+      },
+      {
+        "name": "Level invalid",
+        "passed": true
+      },
+      {
+        "name": "Nilai negatif",
+        "passed": true
+      },
+      {
+        "name": "Nilai lebih 100",
+        "passed": true
+      },
+      {
+        "name": "Nilai 0",
+        "passed": true
+      },
+      {
+        "name": "Nilai 100",
+        "passed": true
+      },
+      {
+        "name": "OOV hasil kosong",
+        "passed": true
+      },
+      {
+        "name": "CSRF ditolak",
+        "passed": true
+      },
+      {
+        "name": "Rekomendasi model asli",
+        "passed": true
+      },
+      {
+        "name": "Quest dibuat",
+        "passed": true
+      },
+      {
+        "name": "Popup sesuai respons reward",
+        "passed": true
+      },
+      {
+        "name": "Header sesuai API",
+        "passed": true
+      },
+      {
+        "name": "Escape dialog",
+        "passed": true
+      },
+      {
+        "name": "Reward ganda dicegah",
+        "passed": true
+      },
+      {
+        "name": "Persistensi refresh",
+        "passed": true
+      },
+      {
+        "name": "Responsif 360",
+        "passed": true
+      },
+      {
+        "name": "Responsif 768",
+        "passed": true
+      },
+      {
+        "name": "Responsif 1440",
+        "passed": true
+      },
+      {
+        "name": "Akses tanpa sesi",
+        "passed": true
+      },
+      {
+        "name": "Login kembali mempertahankan progres",
+        "passed": true
+      },
+      {
+        "name": "Tidak ada exception JavaScript",
+        "passed": true
+      }
+    ]
+  }
+]

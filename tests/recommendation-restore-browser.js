@@ -1,0 +1,73 @@
+async page => {
+  const results = [], errors = [];
+  const canonical = value => JSON.stringify(value, (_, item) => item && typeof item === 'object' && !Array.isArray(item) ? Object.fromEntries(Object.entries(item).sort(([a],[b])=>a.localeCompare(b))) : item);
+  const check = (name, ok) => { if (!ok) throw new Error(name); results.push({name,passed:true}); };
+  page.on('pageerror', e => errors.push(e.message));
+  await page.context().clearCookies();
+  await page.goto('http://127.0.0.1:8012');
+  const email = `restore-${Date.now()}@example.test`;
+  const seed = await page.evaluate(async email => {
+    const post = async (path,body,csrf='') => {
+      const r=await fetch('/api/'+path,{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify(body)});
+      if(!r.ok) throw new Error(`Seed ${path}: ${r.status}`);
+      return r.status===204?null:r.json();
+    };
+    const auth=await post('register',{name:'Pelajar Pemulihan',email,password:'test-password-123'});
+    const rec=await post('recommend',{topic:'python programming',ability:'Intermediate',score:45},auth.csrf_token);
+    const state=await post('quest',{recommendation_id:rec.recommendation_id,course_ids:rec.courses.map(c=>c.course_id)},auth.csrf_token);
+    const completion=await post('complete',{quest_id:state.quest.id,course_id:state.quest.courses[0].course_id,score:0},auth.csrf_token);
+    return completion.state;
+  },email);
+  await page.reload();
+  await page.locator('#app-shell').waitFor({state:'visible'});
+  const ids=selector=>page.locator(selector+' .course-row').evaluateAll(nodes=>nodes.map(n=>n.dataset.courseId));
+  let restored;
+  for(const route of ['quest','beranda']) {
+    await page.goto('http://127.0.0.1:8012/#'+route);
+    await page.reload();
+    await page.locator('#next-recommendations .course-row').first().waitFor({state:'attached'});
+    check(`Refresh mempertahankan halaman ${route}`,page.url().endsWith('#'+route));
+    const q=await ids('#next-recommendations'), home=await ids('#home-recommendations-content');
+    check(`Refresh ${route} memulihkan kandidat pada kedua bagian`,q.length>0&&JSON.stringify(q)===JSON.stringify(home));
+    if(restored)check('Urutan kandidat tetap setelah refresh',JSON.stringify(q)===JSON.stringify(restored));
+    restored=q;
+    const account=await page.evaluate(()=>fetch('/api/me').then(r=>r.json()));
+    check(`Refresh ${route} tidak mengubah XP/quest/progres`,canonical(account.state)===canonical(seed));
+    check(`Refresh ${route} tidak memutar hadiah`,!await page.locator('#reward-dialog').isVisible());
+  }
+  const response=page.waitForResponse(r=>r.url().endsWith('/api/recommend')&&r.ok());
+  await page.reload();
+  const rec=await (await response).json();
+  check('Nilai nol dan level quest dipakai saat restore',rec.request.score===0&&rec.request.ability===seed.quest.target_level);
+  check('Materi selesai dikecualikan',!rec.courses.some(c=>seed.profile.completedIds.includes(c.course_id)));
+  await page.locator('#next-recommendations .course-row').first().waitFor({state:'attached'});
+  await page.locator('#exit-demo').click();await page.waitForURL('**/#login');
+  check('Logout mengosongkan kandidat akun lama',await page.locator('#next-recommendations .course-row').count()===0&&await page.locator('#home-recommendations-content .course-row').count()===0);
+  await page.locator('#auth-email').fill(email);await page.locator('#auth-password').fill('test-password-123');
+  await page.locator('#enter-demo').click();
+  await page.locator('#home-recommendations-content .course-row').first().waitFor({state:'visible'});
+  check('Login ulang memulihkan kandidat',JSON.stringify(await ids('#home-recommendations-content'))===JSON.stringify(restored));
+  await page.route('**/api/recommend',r=>r.fulfill({status:503,contentType:'application/json',body:JSON.stringify({detail:'Model uji tidak tersedia.'})}));
+  await page.goto('http://127.0.0.1:8012/#quest');
+  await page.reload();
+  await page.locator('#next-recommendations').getByText(/Kandidat berikutnya belum dimuat/).waitFor();
+  check('Gagal restore memberi pesan dan menjaga progres',await page.locator('#sidebar-xp').textContent()===`${seed.profile.xp} XP`);
+  await page.unroute('**/api/recommend');await page.reload();
+  await page.locator('#next-recommendations .course-row').first().waitFor();
+  await page.locator('[data-action=start-next]').click();
+  await page.locator('[data-action=confirm-quest]').click();
+  await page.waitForFunction(()=>document.querySelector('#next-recommendations').hidden);
+  const updated=await page.evaluate(()=>fetch('/api/me').then(r=>r.json()));
+  check('Kandidat restore dapat dimulai menjadi quest',updated.state.quest.id!==seed.quest.id&&updated.state.profile.xp===seed.profile.xp);
+  let requests=0;const track=req=>{if(req.url().endsWith('/api/recommend'))requests++;};page.on('request',track);
+  await page.reload();await page.locator('#app-shell').waitFor({state:'visible'});await page.waitForTimeout(300);
+  check('Quest pengganti belum selesai tidak memakai nilai quest lama',requests===0&&await page.locator('#next-recommendations').isHidden());
+  page.off('request',track);
+  await page.locator('#exit-demo').click();await page.waitForURL('**/#login');
+  await page.getByRole('tab',{name:'Buat akun',exact:true}).click();
+  await page.locator('#auth-name').fill('Akun Baru');await page.locator('#auth-email').fill(`other-${Date.now()}@example.test`);await page.locator('#auth-password').fill('test-password-123');await page.locator('#enter-demo').click();
+  await page.waitForURL('**/#beranda');
+  check('Akun lain tidak melihat kandidat pengguna sebelumnya',await page.locator('#next-recommendations .course-row').count()===0&&await page.locator('#home-recommendations-content .course-row').count()===0);
+  check('Tidak ada exception JavaScript',errors.length===0);
+  return results;
+}

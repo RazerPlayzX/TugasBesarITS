@@ -109,7 +109,7 @@ Jangan memakai `python -m http.server`, server frontend terpisah, atau `file://`
 5. Popup menampilkan transaksi backend. Selesai materi mendapat 20 XP ditambah bonus nilai; nilai 90 memberi total 70 XP. Badge kumulatif; progres memakai jumlah selesai dibagi jumlah materi quest yang tetap.
 6. **Logout** mengakhiri sesi tanpa menghapus progres. Hentikan server dengan `Ctrl+C` di terminal.
 
-Level kemampuan, kesulitan kursus, dan level aktivitas berdasarkan XP adalah tiga hal berbeda. Akun dan progres berada pada SQLite **di laptop server masing-masing**. Database tidak disinkronkan melalui GitHub; teman yang menjalankan server sendiri membuat akun sendiri. Refresh mempertahankan quest/progres dari server, tetapi kandidat pencarian di memori browser dapat kosong.
+Level kemampuan, kesulitan kursus, dan level aktivitas berdasarkan XP adalah tiga hal berbeda. Akun dan progres berada pada SQLite **di laptop server masing-masing**. Database tidak disinkronkan melalui GitHub; teman yang menjalankan server sendiri membuat akun sendiri. Refresh mempertahankan halaman, quest, dan progres. Jika ada materi selesai pada quest aktif, rekomendasi berikutnya dimuat ulang dari topik, level sasaran, dan nilai penyelesaian terakhir yang tersimpan, lalu tampil di Quest dan Dashboard. Pencarian manual yang belum menjadi aktivitas quest tetap hanya berada di memori browser.
 
 ## Menjalankan kembali besok
 

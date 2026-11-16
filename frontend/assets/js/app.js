@@ -247,6 +247,8 @@ document.addEventListener("click", (event) => {
 });
 
 async function showNextRecommendations(request, version) {
+  const searchVersion = requestVersion;
+  nextResult = null;
   const container = byId("next-recommendations");
   container.hidden = false;
   container.replaceChildren(
@@ -259,7 +261,7 @@ async function showNextRecommendations(request, version) {
     });
     if (version !== completionVersion) return;
     nextResult = result;
-    renderHomeRecommendations(result);
+    if (searchVersion === requestVersion) renderHomeRecommendations(result);
     container.replaceChildren(
       element("h2", "", "Rekomendasi berikutnya"),
       adaptationRow(result),
@@ -358,7 +360,23 @@ async function restoreSession({ navigate = false } = {}) {
   commit(account.state);
   if (navigate) navigation.go('beranda');
   else navigation.render();
+  restoreNextRecommendations();
 }
+
+function restoreNextRecommendations() {
+  if (!state.quest) return;
+  const questIds = new Set(state.quest.courses.map(course => course.course_id));
+  const latestCompletion = [...state.history].reverse().find(entry => questIds.has(entry.course_id));
+  if (!latestCompletion) return;
+  // Rebuild from the account's saved completion, using the same input as after
+  // completing a course. A fresh recommendation ID remains usable after expiry.
+  void showNextRecommendations({
+    topic: state.quest.topic,
+    ability: state.quest.target_level,
+    score: latestCompletion.score,
+  }, ++completionVersion);
+}
+
 function leaveSession(options) {
   requestVersion++;
   completionVersion++;
@@ -371,6 +389,8 @@ function leaveSession(options) {
   completionBusy = false;
   renderResults(null);
   renderHomeRecommendations(null);
+  byId('next-recommendations').replaceChildren();
+  byId('next-recommendations').hidden = true;
   navigation.go('login', options);
 }
 document.addEventListener('session-expired', () => {
@@ -415,9 +435,11 @@ byId('exit-demo').addEventListener('click', async () => {
 });
 renderResults(null);
 renderHomeRecommendations(null);
-navigation.render();
+// Keep the requested page while /me checks the session after a reload.
+navigation.render({ preserveRoute: true });
 try { await restoreSession(); }
 catch (error) {
+  navigation.render();
   byId('session-notice').textContent = error.message;
   byId('session-notice').hidden = false;
 }

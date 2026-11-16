@@ -15,14 +15,14 @@ export function createNavigation(session) {
   let pointerNavigation = false;
   document.addEventListener('pointerdown', () => { pointerNavigation = true; }, true);
   document.addEventListener('keydown', () => { pointerNavigation = false; }, true);
-  function render({ animate = false } = {}) {
+  function render({ animate = false, preserveRoute = false } = {}) {
     const requested = location.hash.slice(1);
     const view = session.isActive()
       ? requested in VIEWS
         ? requested
         : "beranda"
       : "login";
-    if (requested !== view) history.replaceState(null, "", `#${view}`);
+    if (requested !== view && !preserveRoute) history.replaceState(null, "", `#${view}`);
     byId("login-view").hidden = view !== "login";
     byId("app-shell").hidden = view === "login";
     byId("skip-link").href = view === "login" ? "#login-main" : "#main";
