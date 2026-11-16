@@ -10,6 +10,7 @@ export const emptyState = () => ({
 });
 
 export function profileFromState(state) {
+  if (state.profile) return state.profile;
   const badges = new Set();
   let xp = 0;
   for (const entry of state.history) {

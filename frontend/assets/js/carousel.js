@@ -33,22 +33,19 @@ export function createCarousel(list) {
     next.disabled = list.scrollLeft >= max - 2;
     const items = [...list.children];
     const current = items.reduce((closest, item, index) => {
-      const distance = Math.abs(
-        item.offsetLeft - list.offsetLeft - list.scrollLeft,
-      );
-      const previousDistance = Math.abs(
-        items[closest].offsetLeft - list.offsetLeft - list.scrollLeft,
-      );
+      const left = list.getBoundingClientRect().left;
+      const distance = Math.abs(item.getBoundingClientRect().left - left);
+      const previousDistance = Math.abs(items[closest].getBoundingClientRect().left - left);
       return distance < previousDistance ? index : closest;
     }, 0);
     position.textContent = `Posisi ${Math.max(0, current) + 1} dari ${items.length} materi`;
   }
-  function move(direction) {
+  function move(direction, keyboard = false) {
     const first = list.firstElementChild;
     if (!first) return;
     list.scrollBy({
       left: direction * (first.getBoundingClientRect().width + 16),
-      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+      behavior: keyboard || matchMedia("(prefers-reduced-motion: reduce)").matches
         ? "instant"
         : "smooth",
     });
@@ -57,7 +54,7 @@ export function createCarousel(list) {
     if (event.target !== list) return;
     if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       event.preventDefault();
-      move(event.key === "ArrowRight" ? 1 : -1);
+      move(event.key === "ArrowRight" ? 1 : -1, true);
     }
   });
   list.addEventListener("scroll", update, { passive: true });

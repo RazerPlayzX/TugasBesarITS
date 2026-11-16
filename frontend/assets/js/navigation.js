@@ -1,4 +1,5 @@
 import { byId } from "./ui.js";
+import { createNavigationMotion } from './navigation-motion.js';
 
 const VIEWS = {
   beranda: "Beranda",
@@ -9,7 +10,9 @@ const VIEWS = {
 
 export function createNavigation(session) {
   const menu = byId("main-navigation");
-  function render() {
+  const motion = createNavigationMotion(menu, Object.keys(VIEWS));
+  let activeView = null;
+  function render({ animate = false } = {}) {
     const requested = location.hash.slice(1);
     const view = session.isActive()
       ? requested in VIEWS
@@ -27,18 +30,20 @@ export function createNavigation(session) {
       if (link.dataset.view === view) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
-    const title = VIEWS[view] || "Masuk Mode Demo";
+    const title = VIEWS[view] || "Masuk";
     byId("breadcrumb").textContent = title;
     document.title = `${title} — Alur`;
     byId(view === "login" ? "login-main" : "main").focus({
       preventScroll: true,
     });
     window.scrollTo({ top: 0, behavior: "instant" });
+    motion.update(view, activeView, animate);
+    activeView = view;
   }
 
-  function go(view) {
-    history.pushState(null, "", `#${view}`);
-    render();
+  function go(view, options) {
+    if (location.hash !== `#${view}`) history.pushState(null, "", `#${view}`);
+    render(options);
   }
 
   // Intersepsi rute juga menangani klik tautan ke halaman yang sudah aktif.
@@ -60,7 +65,7 @@ export function createNavigation(session) {
     const view = link.hash.slice(1);
     if (view in VIEWS) {
       event.preventDefault();
-      go(view);
+      go(view, { animate: menu.contains(link) && event.detail > 0 });
     }
   });
   window.addEventListener("hashchange", () => {

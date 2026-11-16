@@ -1,3 +1,67 @@
+# Alur — ITS Langkah 6
+
+Aplikasi lokal HTML/CSS/JavaScript + FastAPI, rekomendasi TF-IDF asli dan SQLite.
+
+## Setup Windows / VS Code
+
+Buka terminal PowerShell pada `C:\Projects\its-kelompok`. Python 3.12 dipakai dan diuji pada proyek ini (tersedia melalui Python Launcher).
+
+```powershell
+py -3.12 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+Copy-Item .env.example .env
+.\.venv\Scripts\python.exe -m backend.store
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8001
+```
+
+Jika `.env` sudah ada, pertahankan isinya. Buka **http://127.0.0.1:8001**. Pilih **Buat akun**, isi nama, email, dan password minimal 10 karakter. Setelah registrasi, akun langsung masuk. Untuk kunjungan berikutnya pilih Masuk. Logout mempertahankan progres. Tidak ada kredensial bawaan. Server statis port 8000 dari langkah 5 tidak menyediakan API dan tidak lagi menjadi cara menjalankan aplikasi.
+
+Tidak perlu mengaktifkan virtualenv dengan Activate.ps1. Pilih `.venv/Scripts/python.exe` sebagai interpreter VS Code. Hentikan server menggunakan Ctrl+C. Port, origin pada `.env`, dan URL browser harus sama; gunakan 127.0.0.1 secara konsisten.
+
+[Revisi UI autentikasi/dashboard terbaru](docs/autentikasi-dashboard.md) memakai tab Masuk/Buat akun dan satu ikon mata. Design system aktual: DESIGN.md.
+
+## Implementasi
+
+- `backend/main.py`: routes, sesi, CSRF, penyajian frontend satu origin.
+- `backend/schemas.py`: kontrak Pydantic request/response.
+- `backend/recommendation.py`: pemeriksaan artefak, normalisasi sumber, transform dan cosine.
+- `backend/rules.py`: aturan adaptasi, XP, badge, level, dan progres.
+- `backend/store.py`: inisialisasi SQLite versi 1, koneksi dan pembacaan state.
+- `frontend/assets/js/services/api.js`: Fetch dan penanganan kegagalan/sesi.
+- `frontend/assets/js/services/recommendation-service.js`: adapter API; tanpa fallback mock.
+
+Mock dan fixture lama disimpan sebagai artefak langkah 5, tetapi tidak digunakan alur aplikasi langkah 6. Data localStorage lama tidak diimpor menjadi akun nyata. Reset demo tidak tersedia pada akun lokal; tidak ada tombol penghapusan progres akun.
+
+[Kontrak API dan keputusan implementasi](docs/langkah-6.md) · [Hasil pengujian aktual](docs/pengujian-api.md).
+
+## Pengujian
+
+```powershell
+.\.venv\Scripts\python.exe -m pytest tests/test_api.py -q
+```
+
+Database backend test menggunakan direktori sementara pytest. Pengujian browser memakai database khusus:
+
+```powershell
+$env:ITS_DB='runtime/e2e.sqlite3'
+$env:ITS_ORIGIN='http://127.0.0.1:8002'
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --host 127.0.0.1 --port 8002
+```
+
+Terminal lain (Playwright CLI harus tersedia):
+
+```powershell
+playwright-cli.cmd -s=api-e2e open http://127.0.0.1:8002 --browser=msedge
+playwright-cli.cmd -s=api-e2e run-code --filename=tests/api-browser.js
+playwright-cli.cmd -s=api-e2e run-code --filename=tests/api-browser-failures.js
+```
+
+Suite frontend lama adalah arsip pengujian mode demo langkah 5; gunakan suite API di atas untuk aplikasi saat ini.
+
+---
+
+## Arsip dokumentasi langkah 5 (sebelum integrasi)
+
 # Alur — Sistem Rekomendasi Adaptif Materi & Jalur Belajar
 
 Implementasi **langkah 5** tugas besar Praktikum Intelligent Tutor System. Frontend HTML5, CSS3, dan JavaScript ES modules, tanpa framework atau build tool. Bahasa antarmuka Indonesia; judul dan deskripsi kursus mempertahankan bahasa sumber.

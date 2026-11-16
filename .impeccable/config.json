@@ -1,3 +1,18 @@
 {
-  "buildPath": "code"
+  "buildPath": "code",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "frontend/index.html"
+        ],
+        "createdAt": "2026-11-15T18:52:22.379Z",
+        "reason": "User explicitly requested a slightly warm neutral background; forest green and warm paper are the approved deliberate palette in DESIGN.md."
+      }
+    ]
+  }
 }

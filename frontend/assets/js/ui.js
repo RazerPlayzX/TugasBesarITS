@@ -129,12 +129,19 @@ export function courseRows(
       p.lang = "en";
       body.append(p);
     }
+    if (course.description && course.description.length > 175) {
+      const details = element('details', 'course-detail');
+      const full = element('p', '', course.description.replace(/<[^>]*>/g, ' '));
+      full.lang = 'en';
+      details.append(element('summary', '', 'Baca deskripsi lengkap'), full);
+      body.append(details);
+    }
     const meta = element("div", "course-meta");
     meta.append(
       element(
         "span",
         "",
-        `Rating: ${Number.isFinite(course.rating) ? course.rating : "Belum tersedia"}`,
+        `Rating: ${course.rating != null && String(course.rating).trim() ? course.rating : "Belum tersedia"}`,
       ),
     );
     if (Number.isFinite(course.cosine_similarity))
@@ -182,7 +189,7 @@ function completionForm(course) {
   form.noValidate = true;
   form.hidden = true;
   const inputId = `quiz-${course.course_id}`;
-  const label = element("label", "", "Nilai kuis simulasi setelah belajar");
+  const label = element("label", "", "Nilai kuis mandiri setelah belajar");
   label.htmlFor = inputId;
   const input = element("input");
   Object.assign(input, {
@@ -235,7 +242,7 @@ export function renderResults(result, { loading = false, error = null } = {}) {
     const node = element("div", "loading-state");
     node.append(
       element("span", "spinner"),
-      element("span", "", "Menyiapkan contoh rekomendasi…"),
+      element("span", "", "Menghitung rekomendasi…"),
     );
     content.append(node);
     return;
@@ -265,7 +272,7 @@ export function renderResults(result, { loading = false, error = null } = {}) {
       emptyPanel(
         result.status === "unsupported"
           ? "Topik di luar skenario demo"
-          : "Belum ada kandidat pada contoh ini",
+          : "Belum ada kandidat sesuai kebutuhanmu",
         result.message,
       ),
     );
@@ -310,8 +317,8 @@ export function renderState(state, user = DEMO_USER) {
   byId("account-name").title = account.name;
   byId("account-avatar").textContent = account.name.trim().slice(0, 1).toUpperCase();
   const profile = profileFromState(state);
-  const progress = questProgress(state.quest, profile.completedIds);
-  const level = activityLevel(profile.xp);
+  const progress = state.progress ?? questProgress(state.quest, profile.completedIds);
+  const level = profile.level ?? activityLevel(profile.xp);
   byId("sidebar-level").textContent = `Level Aktivitas ${level}`;
   byId("sidebar-xp").textContent = `${profile.xp} XP`;
   byId("nav-quest-count").textContent = String(
@@ -438,7 +445,7 @@ function renderProgress(state, profile, progress, level) {
     element(
       "p",
       "",
-      `${profile.completedIds.length} materi selesai di seluruh riwayat demo.`,
+      `${profile.completedIds.length} materi selesai di seluruh riwayat belajar.`,
     ),
   );
   overview.append(xp, detail);
@@ -469,7 +476,7 @@ function renderProgress(state, profile, progress, level) {
       const li = element("li");
       const label = element("div", "", entry.title);
       label.append(
-        element("small", "", `${entry.topic} · Nilai simulasi ${entry.score}`),
+        element("small", "", `${entry.topic} · Nilai mandiri ${entry.score}`),
       );
       // XP per riwayat berasal dari aturan terpusat melalui perbedaan profil satu entri.
       li.append(

@@ -1,0 +1,114 @@
+[
+  {
+    "name": "Registrasi dan profil header",
+    "passed": true
+  },
+  {
+    "name": "Topik kosong",
+    "passed": true
+  },
+  {
+    "name": "Level invalid",
+    "passed": true
+  },
+  {
+    "name": "Nilai negatif",
+    "passed": true
+  },
+  {
+    "name": "Nilai lebih 100",
+    "passed": true
+  },
+  {
+    "name": "Nilai 0",
+    "passed": true
+  },
+  {
+    "name": "Nilai 100",
+    "passed": true
+  },
+  {
+    "name": "OOV hasil kosong",
+    "passed": true
+  },
+  {
+    "name": "CSRF ditolak",
+    "passed": true
+  },
+  {
+    "name": "Rekomendasi model asli",
+    "passed": true
+  },
+  {
+    "name": "Quest dibuat",
+    "passed": true
+  },
+  {
+    "name": "Popup sesuai respons reward",
+    "passed": true
+  },
+  {
+    "name": "Header sesuai API",
+    "passed": true
+  },
+  {
+    "name": "Escape dialog",
+    "passed": true
+  },
+  {
+    "name": "Reward ganda dicegah",
+    "passed": true
+  },
+  {
+    "name": "Persistensi refresh",
+    "passed": true
+  },
+  {
+    "name": "Responsif 360",
+    "passed": true
+  },
+  {
+    "name": "Responsif 768",
+    "passed": true
+  },
+  {
+    "name": "Responsif 1440",
+    "passed": true
+  },
+  {
+    "name": "Akses tanpa sesi",
+    "passed": true
+  },
+  {
+    "name": "Login kembali mempertahankan progres",
+    "passed": true
+  },
+  {
+    "name": "Tidak ada exception JavaScript",
+    "passed": true
+  },
+  {
+    "name": "Backend indisponibel menampilkan error",
+    "passed": true
+  },
+  {
+    "name": "Submit ganda dinonaktifkan",
+    "passed": true
+  },
+  {
+    "name": "Respons lambat tidak memindahkan halaman",
+    "passed": true
+  },
+  {
+    "name": "Kegagalan simpan tidak memberi hadiah",
+    "passed": true
+  },
+  {
+    "name": "Popup naik level dan badge baru",
+    "passed": true
+  },
+  {
+    "name": "Sesi kedaluwarsa kembali ke login",
+    "passed": true
+  }
+]

@@ -1,0 +1,43 @@
+async page => {
+  const results = [];
+  const check = (name, ok) => { if (!ok) throw new Error(name); results.push({name,passed:true}); };
+  await page.locator('[data-view=rekomendasi]').click();
+  await page.locator('[data-preset=python]').click();
+  await page.route('**/api/recommend', route => route.abort());
+  await page.locator('#search-button').click();
+  await page.getByText('Data belum berhasil dimuat', {exact:true}).waitFor();
+  check('Backend indisponibel menampilkan error', (await page.locator('#search-status').textContent()).includes('Server tidak dapat dihubungi'));
+  await page.unroute('**/api/recommend');
+  await page.route('**/api/recommend', async route => {
+    await new Promise(resolve=>setTimeout(resolve,400));
+    await route.continue();
+  });
+  await page.locator('#search-button').click();
+  check('Submit ganda dinonaktifkan',await page.locator('#search-button').isDisabled());
+  await page.locator('[data-view=beranda]').click();
+  await page.waitForFunction(()=>!document.querySelector('#search-button').disabled);
+  check('Respons lambat tidak memindahkan halaman',page.url().endsWith('#beranda'));
+  await page.unroute('**/api/recommend');
+  await page.locator('[data-view=quest]').click();
+  await page.locator('[data-action=open-completion]').first().click();
+  const form=page.locator('.completion-form:visible');
+  await form.locator('input').fill('80');
+  await page.route('**/api/complete',route=>route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({detail:'Penyimpanan tidak tersedia.'})}));
+  await form.locator('button[type=submit]').click();
+  await page.getByText('Penyimpanan tidak tersedia.',{exact:true}).waitFor();
+  check('Kegagalan simpan tidak memberi hadiah',!(await page.locator('#reward-dialog').isVisible()) && await page.locator('#sidebar-xp').textContent()==='70 XP');
+  await page.unroute('**/api/complete');
+  const response=page.waitForResponse(r=>r.url().endsWith('/api/complete'));
+  await form.locator('button[type=submit]').click();
+  const result=await (await response).json();
+  await page.locator('#reward-dialog').waitFor({state:'visible'});
+  check('Popup naik level dan badge baru',result.level_before===1 && result.level_after===2 && result.new_badges.length===0 && (await page.locator('#reward-summary').textContent()).includes('1 → 2') && (await page.locator('#reward-badges').textContent()).includes('Belum ada badge baru'));
+  await page.keyboard.press('Escape');
+  await page.locator('[data-view=rekomendasi]').click();
+  await page.route('**/api/recommend',route=>route.fulfill({status:401,contentType:'application/json',body:JSON.stringify({detail:'Sesi berakhir.'})}));
+  await page.locator('#search-button').click();
+  await page.waitForURL('**/#login');
+  check('Sesi kedaluwarsa kembali ke login',await page.locator('#login-view').isVisible());
+  await page.unroute('**/api/recommend');
+  return results;
+}

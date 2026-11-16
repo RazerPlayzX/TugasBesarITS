@@ -1,88 +1,25 @@
-# Sistem Rekomendasi Adaptif Materi & Jalur Belajar
+# Sistem Rekomendasi Adaptif Materi & Jalur Belajar — Alur
 
-<!-- impeccable:product-schema 1 -->
+## Status implementasi
 
-## Platform
+Langkah6 sudah terintegrasi: HTML5/CSS3/JavaScript ES modules dan Fetch, backend FastAPI/Pydantic, SQLite, sesi cookie HttpOnly, model TF-IDF/cosine lokal. Bukan mode demo; mock langkah5 hanya arsip, tidak dipakai service aktif. Acuan visual tunggal DESIGN.md, tokens CSS dan sidecar yang disinkronkan. Dokumen langkah5 dan redesign terdahulu adalah catatan historis.
 
-web
+## Pengguna dan tujuan
 
-## Stack
+Mahasiswa menentukan materi berdasarkan topik, kemampuan awal dan nilai kuis mandiri. Alur: buat akun/masuk, isi kebutuhan, lihat kandidat, mulai quest, buka materi, laporkan penyelesaian/nilai, lihat XP/badge/progres. Level aktivitas berdasarkan XP berbeda dari kemampuan dan kesulitan kursus. Login/logout tidak menghapus progres.
 
-- Langkah 5: HTML5, CSS3, dan JavaScript biasa, tanpa React, Next.js, atau framework frontend tambahan.
-- Langkah 6 (direncanakan): Python dengan FastAPI, validasi input menggunakan Pydantic, dan komunikasi melalui Fetch API tanpa reload halaman.
-- Model pada langkah 6 menggunakan berkas joblib hasil notebook yang berisi TF-IDF vectorizer, matriks, dan data kursus. Normalisasi input harus mengikuti `normalisasi_teks.py`.
-- Pengembangan lokal menggunakan VS Code. Target hosting belum ditentukan; jalankan secara lokal terlebih dahulu.
+## Perilaku wajib
 
-## Users
+Input nilai0–100, termasuk0 valid. Adaptasi <60 turun1level minimumBeginner;60–<80 tetap;>=80 naik1level maksimumAdvanced. Conversant/Not Calibrated tidak dipetakan. Model memfilter target, mengecualikan materi selesai dan skor0, mengurutkan cosine; tidak fit ulang.
 
-Mahasiswa yang membutuhkan bantuan memilih materi belajar berdasarkan topik, kemampuan awal, dan hasil kuis. Mereka perlu mengetahui materi yang harus dipelajari, kebutuhan remedial atau materi lanjutan, serta progres belajarnya.
+Materi selesai20XP + bonus50 jika>=90,30 jika>=80,20 jika>=60,10 jika<60. Level aktivitas pada0/100/200/300XP. Badge Quiz Master>=90, Smart Learner>=80, Learning Explorer untuk selesai, Keep Learning<60; badge kumulatif dan unik. Progres selesai/total quest tetap, quest kosong0. Backend menentukan identitas, transaksi dan deduplikasi course_id; UI tidak menghitung hadiah sendiri.
 
-## Product Purpose
+## Frontend terbaru
 
-Website untuk tugas besar Intelligent Tutor System yang membantu mahasiswa menentukan materi dan jalur belajar adaptif, menerima rekomendasi remedial atau lanjutan, serta memantau progres belajar.
+Tab Masuk/Buat akun dan satu ikon reveal password, backend auth tetap. Dashboard mobile: header akun/level/XP, aktivitas dengan satu tombol Cari Materi di dalam box (tanpa kolom search dashboard), carousel hasil API, ringkasan, riwayat nyata. Shortcut tiga tombol dan CTA pencarian duplikat di dashboard dihapus; menu utama tetap pada navbar. Klik/tap menu utama memiliki slide halaman/indikator singkat tanpa mengubah state; keyboard dan reduced motion tetap langsung. Hasil rekomendasi ditampilkan setelah input kebutuhan, tidak dibuat otomatis dari kueri palsu. Refresh memulihkan akun/quest/progres; kandidat pencarian di memori dapat kosong setelah refresh. Desktop mempertahankan navbar sticky/menu tengah/akun kanan; ponsel bottom navigation.
 
-Keberhasilan antarmuka berarti mahasiswa dapat memasukkan kondisi belajarnya, memahami rekomendasi yang ditampilkan, dan mengikuti penyelesaian materi dengan jelas. Pada langkah 5, seluruh demonstrasi rekomendasi menggunakan data simulasi yang diberi label.
+## Batas dan etika
 
-## Operating Context
+Nilai kuis input mandiri belum diverifikasi. Penyelesaian eksternal dilaporkan pengguna. Cosine bukan akurasi; urutan bukan bukti prasyarat pedagogis. Academic disclaimer wajib. Tidak ada bank soal resmi, verifikasi email, reset password atau deployment. Tidak menambah fitur komersial dari referensi.
 
-- Digunakan melalui browser pada desktop dan ponsel, bukan aplikasi native.
-- Alur utama: memasukkan topik, level kemampuan, dan nilai kuis; melihat rekomendasi kursus; mengikuti quest belajar; lalu memantau penyelesaian materi, XP, level aktivitas, dan badge.
-- Pekerjaan saat ini hanya mencakup langkah 5, yaitu antarmuka. Backend, REST API, dan integrasi model TF-IDF serta cosine similarity dikerjakan pada langkah 6.
-- Notebook langkah 1–4 menjadi acuan aturan rekomendasi dan gamifikasi. Aturan tersebut harus dipertahankan.
-
-## Capabilities and Constraints
-
-### Fitur wajib
-
-1. Input topik belajar, level kemampuan, dan nilai kuis.
-2. Daftar rekomendasi kursus dari dataset MOOC, beserta tingkat kesulitan dan tautannya; demonstrasi langkah 5 memakai data simulasi berlabel.
-3. Quest belajar dan progres penyelesaian materi.
-4. XP, level aktivitas, dan badge. Level aktivitas berbeda dari level kemampuan dan harus dijelaskan sebagai konsep yang terpisah.
-5. Tampilan responsif untuk desktop dan ponsel.
-6. Kondisi loading, hasil kosong, error, serta disclaimer prototipe edukatif.
-
-### Batasan implementasi
-
-- Jangan mengubah atau menciptakan pengganti aturan rekomendasi dan gamifikasi dari notebook langkah 1–4.
-- Data simulasi hanya untuk demonstrasi antarmuka; jangan menyajikannya sebagai hasil model yang telah terintegrasi.
-- Jangan mengimplementasikan backend atau integrasi model dalam lingkup langkah 5.
-- Gunakan bahasa Indonesia untuk antarmuka.
-
-### Keputusan terbuka
-
-- Target hosting belum ditentukan.
-- Kontrak REST API merupakan usulan langkah 6, belum merupakan endpoint yang berjalan.
-- Relevansi materi dan hubungan prasyarat masih memerlukan validasi pengajar.
-
-## Brand Commitments
-
-- Nama produk: Sistem Rekomendasi Adaptif Materi & Jalur Belajar.
-- Antarmuka berbahasa Indonesia, modern, rapi, dan mudah dipahami.
-- Tipografi dan hierarki informasi harus matang, dengan aktivitas belajar sebagai prioritas.
-- Hindari dekorasi berlebihan dan tampilan dashboard generik.
-- Komitmen ini berasal dari arahan pengguna; palet, font, dan komponen belum ditetapkan.
-
-## Evidence on Hand
-
-- Konteks dan persyaratan produk dikonfirmasi pengguna melalui wawancara init.
-- Sumber kini tersedia di `referensi/`: PDF panduan, `ITS_Langkah_1_4_Disesuaikan.ipynb`, serta `Hasil_ITS_Langkah_1_4/hasil_langkah_1` dan `hasil_langkah_2_4`.
-- Aturan adaptasi dan gamifikasi telah dicocokkan dengan sel 36–40 notebook (indeks sel berbasis nol); aturan sesuai arahan pengguna.
-- Fixture antarmuka mengambil subset ekspor `quest_aktif_simulasi.csv` dan `evaluasi_relevansi_belum_dinilai.csv`, diperkaya metadata dari `mooc_clean.csv`. Model joblib tidak dijalankan.
-- Profil demo dimulai kosong. Profil Alya dari sumber tidak diimpor, sehingga status selesai dan 50 XP Alya tidak bercampur dengan profil baru.
-- Aplikasi langkah 5 menggunakan nama tampilan Alur. Tema tugas tetap Sistem Rekomendasi Adaptif Materi & Jalur Belajar.
-- Jangan mengarang hasil evaluasi model, akurasi, data kursus nyata, atau bukti keberhasilan produk. Konten demonstrasi harus ditandai sebagai simulasi.
-
-## Product Principles
-
-1. Dahulukan kebutuhan mahasiswa untuk memilih materi dan melanjutkan aktivitas belajar.
-2. Bedakan kemampuan akademik dari aktivitas dan penghargaan gamifikasi.
-3. Pertahankan aturan rekomendasi dan gamifikasi yang ditetapkan notebook.
-4. Sampaikan status, keterbatasan prototipe, dan sifat simulasi data secara jelas.
-5. Pastikan alur belajar mudah dipahami dan dapat digunakan pada desktop maupun ponsel.
-
-
-## Perluasan antarmuka langkah 5 ? 15 November 2026
-
-Beranda menjadi pusat aktivitas, dengan keadaan kosong, quest aktif, atau quest selesai. Prioritas adalah materi berikutnya dan progres quest; XP, level aktivitas, serta badge menjadi ringkasan pendukung. Riwayat hanya tampil jika ada pencatatan penyelesaian. Navigasi: Beranda, Rekomendasi Materi, Quest Saya, Pencapaian; ponsel memakai menu disclosure.
-
-Halaman masuk hanya menyediakan Masuk Mode Demo, tanpa formulir kredensial. Penanda sessionStorage bukan autentikasi; keluar mempertahankan progres lokal. Arah visual, aturan adaptasi/gamifikasi, data simulasi berlabel, dan service layer langkah 5 dipertahankan. Tidak ada backend atau pengamanan akun yang diklaim selesai.
+Setup di README.md, kontrak API docs/langkah-6.md, bukti terbaru docs/autentikasi-dashboard.md. PDF panduan dan notebook tetap acuan tugas/aturan bisnis.

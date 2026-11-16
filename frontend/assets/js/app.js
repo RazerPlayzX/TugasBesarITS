@@ -1,16 +1,12 @@
+import { authMode, concealPassword, setAuthBusy } from './auth-controls.js';
+import { api } from './services/api.js';
 import { showReward } from './reward-dialog.js';
-import { createDemoSession } from "./session.js";
 import { createNavigation } from "./navigation.js";
-import { renderDashboard } from "./dashboard.js";
+import { renderDashboard, renderHomeRecommendations, homeRecommendation } from "./dashboard.js";
 import { validateLearningInput, scoreError } from "./validation.js";
-import { questProgress } from "./gamification.js";
 import {
-  loadState,
-  saveState,
-  clearState,
   emptyState,
   profileFromState,
-  startQuest,
 } from "./state.js";
 import { recommendationService } from "./services/recommendation-service.js";
 import {
@@ -25,9 +21,10 @@ import {
   adaptationRow,
 } from "./ui.js";
 
-const session = createDemoSession();
+let activeUser = null;
+const session = { isActive: () => Boolean(activeUser), user: () => activeUser, notice: () => '' };
 const navigation = createNavigation(session);
-const loaded = loadState();
+const loaded = {state: emptyState(), notice: ''};
 let state = loaded.state;
 let currentResult = null;
 let nextResult = null;
@@ -45,12 +42,6 @@ function storageNotice(message) {
 
 function commit(newState) {
   state = newState;
-  const saved = saveState(state);
-  storageNotice(
-    saved
-      ? ""
-      : "Browser tidak mengizinkan penyimpanan. Progres tetap bisa digunakan pada sesi ini, tetapi tidak tersimpan setelah halaman ditutup.",
-  );
   renderState(state, session.user());
   renderDashboard(state);
 }
@@ -71,11 +62,11 @@ async function search(request) {
   pendingQuest = null;
   setSearchBusy(true);
   renderResults(null, { loading: true });
-  byId("search-status").textContent = "Sedang memuat contoh rekomendasi.";
+  byId("search-status").textContent = "Menghitung rekomendasi materi.";
   try {
     let result = await recommendationService.recommend(request, {
       completedIds: profileFromState(state).completedIds,
-      mode: byId("demo-mode").value,
+
     });
     if (version !== requestVersion) return;
     // Riwayat dapat berubah ketika respons pencarian lambat masih ditunggu.
@@ -95,6 +86,7 @@ async function search(request) {
     }
     currentResult = result;
     renderResults(result);
+    renderHomeRecommendations(result);
     byId("search-status").textContent =
       `${result.courses.length} kandidat. ${result.adaptation.quest_type}, level sasaran ${result.adaptation.target_level}. ${result.message}`;
   } catch (error) {
@@ -138,11 +130,17 @@ document.querySelectorAll("[data-preset]").forEach((node) =>
   }),
 );
 
-function activateQuest(result, courses) {
+let questBusy = false;
+async function activateQuest(result, courses) {
+  if (questBusy) return;
+  questBusy = true;
+  const owner = activeUser;
   let newState;
   try {
-    newState = startQuest(state, result, courses);
+    newState = await recommendationService.start(result, courses, Boolean(pendingQuest));
+    if (owner !== activeUser) { questBusy = false; return; }
   } catch (error) {
+    questBusy = false;
     pendingQuest = null;
     document.querySelector(".quest-replacement")?.remove();
     showFeedback(error.message);
@@ -150,6 +148,7 @@ function activateQuest(result, courses) {
     byId("feedback").focus();
     return;
   }
+  questBusy = false;
   // Abaikan respons asinkron yang masih berjalan dari quest sebelumnya.
   completionVersion++;
   completionBusy = false;
@@ -167,10 +166,7 @@ function activateQuest(result, courses) {
 
 function requestQuest(result, courses, trigger) {
   if (!result || !courses.length) return;
-  const progress = questProgress(
-    state.quest,
-    profileFromState(state).completedIds,
-  );
+  const progress = state.progress || { percent: 0 };
   if (state.quest && progress.percent < 100) {
     pendingQuest = { result, courses, trigger };
     document.querySelector(".quest-replacement")?.remove();
@@ -220,7 +216,7 @@ document.addEventListener("click", (event) => {
     requestQuest(nextResult, nextResult?.courses || [], target);
   if (action === "start-single") {
     const result =
-      target.dataset.prefix === "next" ? nextResult : currentResult;
+      target.dataset.prefix === "home" ? homeRecommendation() : target.dataset.prefix === "next" ? nextResult : currentResult;
     requestQuest(
       result,
       result?.courses.filter(
@@ -263,6 +259,7 @@ async function showNextRecommendations(request, version) {
     });
     if (version !== completionVersion) return;
     nextResult = result;
+    renderHomeRecommendations(result);
     container.replaceChildren(
       element("h2", "", "Rekomendasi berikutnya"),
       adaptationRow(result),
@@ -313,7 +310,6 @@ byId("quest-content").addEventListener("submit", async (event) => {
   const version = ++completionVersion;
   form.querySelector('button[type="submit"]').disabled = true;
   try {
-    const beforeCompletion = state;
     const result = await recommendationService.complete(state, {
       course_id: form.dataset.courseId,
       score,
@@ -321,7 +317,7 @@ byId("quest-content").addEventListener("submit", async (event) => {
     if (version !== completionVersion) return;
     commit(result.state);
     const profile = profileFromState(state);
-    const progress = questProgress(state.quest, profile.completedIds);
+    const progress = state.progress;
     showFeedback(
       result.duplicate
         ? "Penyelesaian sudah tercatat; XP tidak ditambah."
@@ -329,7 +325,7 @@ byId("quest-content").addEventListener("submit", async (event) => {
     );
     byId("feedback").tabIndex = -1;
     byId("feedback").focus();
-    if (!result.duplicate) showReward(beforeCompletion, result, form.dataset.courseId);
+    if (!result.duplicate) showReward(result, form.dataset.courseId);
     // Hapus kandidat selesai tanpa mengubah daftar quest aktif.
     if (currentResult) {
       currentResult = {
@@ -339,6 +335,7 @@ byId("quest-content").addEventListener("submit", async (event) => {
         ),
       };
       renderResults(currentResult);
+      renderHomeRecommendations(currentResult);
     }
     await showNextRecommendations(
       { topic: state.quest.topic, ability: state.quest.target_level, score },
@@ -354,80 +351,73 @@ byId("quest-content").addEventListener("submit", async (event) => {
   }
 });
 
-byId("reset-demo").addEventListener("click", () => {
-  byId("reset-confirmation").hidden = false;
-  byId("confirm-reset").focus();
-});
-byId("cancel-reset").addEventListener("click", () => {
-  byId("reset-confirmation").hidden = true;
-  byId("reset-demo").focus();
-});
-byId("confirm-reset").addEventListener("click", () => {
+
+async function restoreSession() {
+  const account = await api('me');
+  activeUser = account.user;
+  commit(account.state);
+  navigation.render();
+}
+function leaveSession() {
   requestVersion++;
   completionVersion++;
-  completionBusy = false;
-  pendingQuest = null;
+  activeUser = null;
   state = emptyState();
-  const cleared = clearState();
-  storageNotice(
-    cleared
-      ? ""
-      : "Penyimpanan browser tidak dapat diakses. Sesi ini sudah direset, tetapi data lama di penyimpanan belum dapat dihapus.",
-  );
   currentResult = null;
   nextResult = null;
-  lastRequest = null;
-  setSearchBusy(false);
-  byId("learning-form").reset();
-  byId("demo-mode").value = "normal";
-  renderValidation({});
-  renderResults(null);
-  renderState(state, session.user());
-  renderDashboard(state);
-  byId("next-recommendations").hidden = true;
-  byId("next-recommendations").replaceChildren();
-  byId("reset-confirmation").hidden = true;
-  byId("search-status").textContent = "";
-  showFeedback(
-    "Demo direset. Quest kosong, 0 XP, dan belum ada badge. Data situs lain tidak dihapus.",
-  );
-  navigation.go("beranda");
-});
-
-function updateSessionNotice() {
-  byId("session-notice").textContent = session.notice();
-  byId("session-notice").hidden = !session.notice();
-}
-
-byId("enter-demo").addEventListener("click", () => {
-  session.enter();
-  renderState(state, session.user());
-  updateSessionNotice();
-  storageNotice(session.notice() || loaded.notice);
-  navigation.go("beranda");
-});
-byId("exit-demo").addEventListener("click", () => {
-  // Respons tertunda dari sesi yang ditutup tidak boleh mengubah progres.
-  requestVersion++;
-  completionVersion++;
-  completionBusy = false;
   pendingQuest = null;
-  setSearchBusy(false);
-  renderResults(currentResult);
-  renderState(state, session.user());
-  renderDashboard(state);
-  document.querySelector(".quest-replacement")?.remove();
-  byId("next-recommendations").hidden = true;
-  byId("feedback").hidden = true;
-  byId("reset-confirmation").hidden = true;
-  session.exit();
-  updateSessionNotice();
-  navigation.go("login");
+  searchBusy = false;
+  completionBusy = false;
+  renderResults(null);
+  renderHomeRecommendations(null);
+  navigation.go('login');
+}
+document.addEventListener('session-expired', () => {
+  leaveSession();
+  byId('session-notice').hidden = false;
+  byId('session-notice').textContent = 'Sesi berakhir. Masuk kembali untuk melanjutkan.';
 });
-
-renderState(state, session.user());
-renderDashboard(state);
+byId('auth-form').addEventListener('submit', async event => {
+  event.preventDefault();
+  const submit = byId('enter-demo');
+  if (submit.disabled) return;
+  submit.disabled = true;
+  setAuthBusy(true);
+  byId('auth-form').setAttribute('aria-busy', 'true');
+  submit.textContent = 'Memproses…';
+  const notice = byId('session-notice');
+  notice.hidden = true;
+  const registration = authMode() === 'register';
+  const body = {email: byId('auth-email').value, password: byId('auth-password').value};
+  if (registration) body.name = byId('auth-name').value;
+  try {
+    await api(registration ? 'register' : 'login', body);
+    byId('auth-password').value = '';
+    concealPassword();
+    await restoreSession();
+    navigation.go('beranda');
+  } catch (error) {
+    notice.textContent = error.message;
+    notice.hidden = false;
+  } finally {
+    submit.disabled = false;
+    setAuthBusy(false);
+    byId('auth-form').setAttribute('aria-busy', 'false');
+    submit.textContent = authMode() === 'register' ? 'Buat akun' : 'Masuk';
+  }
+});
+byId('exit-demo').addEventListener('click', async () => {
+  const button = byId('exit-demo');
+  button.disabled = true;
+  try { await api('logout', {}); leaveSession(); }
+  catch (error) { showFeedback(error.message); }
+  finally { button.disabled = false; }
+});
 renderResults(null);
-storageNotice(loaded.notice);
-updateSessionNotice();
+renderHomeRecommendations(null);
 navigation.render();
+try { await restoreSession(); }
+catch (error) {
+  byId('session-notice').textContent = error.message;
+  byId('session-notice').hidden = false;
+}

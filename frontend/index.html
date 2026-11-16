@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#153f36" />
+    <meta name="theme-color" content="#123c31" />
     <meta
       name="description"
       content="Prototipe ITS edukatif untuk rekomendasi materi dan quest belajar adaptif."
     />
     <title>Alur — Ruang belajar adaptif</title>
+    <link rel="preload" href="assets/fonts/Manrope-Variable.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="icon" href="assets/icons/mark.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="assets/css/tokens.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
@@ -42,28 +43,49 @@
       </section>
       <main id="login-main" class="login-main" tabindex="-1">
         <div class="login-entry">
-          <h1>Masuk ke ruang belajarmu.</h1>
-          <p>
-            Coba alur rekomendasi, quest, dan pencapaian dengan data simulasi.
-            Mulai tanpa membuat akun.
-          </p>
+          <h1 id="auth-title">Selamat datang kembali.</h1>
+          <p>Masuk untuk menemukan materi dan menyimpan progres belajarmu.</p>
           <span class="demo-label"
-            ><span aria-hidden="true"></span>Mode demonstrasi</span
+            ><span aria-hidden="true"></span>Rekomendasi model</span
           >
-          <button id="enter-demo" type="button" class="button primary">
-            Masuk Mode Demo
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M4 12h16m-6-6 6 6-6 6" />
-            </svg>
-          </button>
-          <div class="login-explanation">
-            <strong>Autentikasi belum terhubung.</strong>
-            <p>
-              Tombol ini hanya membuka sesi demonstrasi, bukan memverifikasi
-              identitas atau mengamankan data. Progres demo disimpan di browser
-              ini; keluar tidak menghapusnya.
-            </p>
+          <div class="auth-tabs" role="tablist" aria-label="Akses akun">
+            <button id="tab-login" type="button" role="tab" data-auth-mode="login" aria-selected="true" aria-controls="auth-panel">Masuk</button>
+            <button id="tab-register" type="button" role="tab" data-auth-mode="register" aria-selected="false" aria-controls="auth-panel" tabindex="-1">Buat akun</button>
           </div>
+          <div id="auth-panel" role="tabpanel" aria-labelledby="tab-login">
+          <form id="auth-form">
+            <div id="name-field" hidden>
+              <label for="auth-name">Nama</label
+              ><input id="auth-name" name="name" autocomplete="name" maxlength="80" />
+            </div>
+            <label for="auth-email">Email</label
+            ><input
+              id="auth-email" name="email" spellcheck="false"
+              type="email"
+              required
+              autocomplete="username"
+              maxlength="254"
+              aria-describedby="session-notice"
+            />
+            <label for="auth-password">Password (minimal 10 karakter)</label
+            ><div class="password-control"><input
+              id="auth-password" name="password"
+              type="password"
+              required
+              minlength="10"
+              maxlength="128"
+              autocomplete="current-password"
+              aria-describedby="session-notice"
+            /><button id="toggle-password" class="password-toggle" type="button" aria-controls="auth-password" aria-pressed="false" aria-label="Tampilkan password"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="eye-slash" d="m3 3 18 18" hidden/></svg></button></div>
+            <button id="enter-demo" type="submit" class="button primary">
+              Masuk
+            </button>
+          </form>
+          </div>
+          <p>
+            Akun disimpan pada server lokal proyek. Gunakan identitas untuk
+            pengujian akademik.
+          </p>
           <p
             id="session-notice"
             class="notice warning"
@@ -75,9 +97,9 @@
           <strong>Prototipe edukatif</strong>
           <p>
             Sistem ini merupakan prototipe ITS untuk keperluan edukasi.
-            Rekomendasi tidak menggantikan penilaian pengajar. Pada mode
-            demonstrasi, nilai kuis dan interaksi belajar menggunakan data
-            simulasi.
+            Rekomendasi tidak menggantikan penilaian pengajar. Nilai kuis
+            merupakan input mandiri yang belum terverifikasi; penyelesaian
+            materi dilaporkan oleh pengguna.
           </p>
         </footer>
       </main>
@@ -117,14 +139,29 @@
           >
         </nav>
         <div class="topbar">
-        <div class="account-summary"><span class="avatar" id="account-avatar" aria-hidden="true"></span><div class="account-copy"><strong id="account-name"></strong><span class="mobile-demo-label">Mode demonstrasi</span><span><span id="sidebar-level"></span> &middot; <span id="sidebar-xp"></span></span></div></div>
-        <button id="exit-demo" class="button secondary" type="button">Logout<span class="sr-only"> mode demo</span></button>
+          <div class="account-summary">
+            <span class="avatar" id="account-avatar" aria-hidden="true"></span>
+            <div class="account-copy">
+              <strong id="account-name"></strong
+              ><span class="mobile-demo-label">Rekomendasi model</span
+              ><span
+                ><span id="sidebar-level"></span> &middot;
+                <span id="sidebar-xp"></span
+              ></span>
+            </div>
+          </div>
+          <button id="exit-demo" class="button secondary" type="button">
+            Logout<span class="sr-only"> akun lokal</span>
+          </button>
         </div>
       </header>
 
       <div class="workspace">
-      <main id="main" tabindex="-1">
-          <div class="header-context"><strong id="breadcrumb">Beranda</strong><span class="demo-label">Mode demonstrasi</span></div>
+        <main id="main" tabindex="-1">
+          <div class="header-context">
+            <strong id="breadcrumb">Beranda</strong
+            ><span class="demo-label">Rekomendasi model</span>
+          </div>
           <div
             id="storage-notice"
             class="notice warning"
@@ -142,7 +179,7 @@
           <section id="view-beranda" aria-labelledby="home-title" hidden>
             <div class="page-heading">
               <div>
-                <h1 id="home-title">Ruang untuk langkah berikutnya.</h1>
+                <h1 id="home-title">Ruang belajarmu.</h1>
                 <p>
                   Mulai dari kebutuhanmu. Bangun progres, satu materi setiap
                   kali.
@@ -155,30 +192,23 @@
                 class="dashboard-activity"
                 aria-label="Aktivitas belajar utama"
               ></section>
+
+            </div>
+            <section id="home-recommendations" class="home-recommendations" aria-labelledby="home-recommendations-title">
+              <div class="section-heading"><h2 id="home-recommendations-title">Materi untuk langkahmu</h2></div>
+              <div id="home-recommendations-content"></div>
+            </section>
               <aside
                 id="dashboard-summary"
                 class="dashboard-summary"
                 aria-label="Ringkasan pencapaian"
               ></aside>
-            </div>
             <section
               id="dashboard-recent"
               class="dashboard-recent"
               aria-label="Aktivitas terakhir"
               hidden
             ></section>
-            <div class="dashboard-discovery">
-              <div>
-                <h2>Ingin mempelajari topik lain?</h2>
-                <p>
-                  Kandidat baru ditampilkan terpisah. Quest aktifmu tetap
-                  tersimpan sampai kamu memilih menggantinya.
-                </p>
-              </div>
-              <a class="button secondary" href="#rekomendasi"
-                >Jelajahi materi</a
-              >
-            </div>
           </section>
           <section
             id="view-rekomendasi"
@@ -187,7 +217,7 @@
           >
             <div class="page-heading">
               <div>
-                <h1 id="recommendation-title">Temukan langkah belajarmu.</h1>
+                <h1 id="recommendation-title">Temukan materi yang tepat.</h1>
                 <p>
                   Mulai dari yang kamu butuhkan. Lanjutkan dengan materi yang
                   sesuai.
@@ -270,7 +300,7 @@
                           /><span aria-hidden="true">/ 100</span>
                         </div>
                         <p id="score-hint" class="hint">
-                          Nilai simulasi, termasuk nilai 0.
+                          Nilai mandiri, termasuk nilai 0.
                         </p>
                         <p id="score-error" class="field-error" hidden></p>
                       </div>
@@ -287,7 +317,7 @@
                     </button>
                   </form>
                   <div class="demo-presets">
-                    <span>Coba skenario demo</span>
+                    <span>Contoh topik</span>
                     <div>
                       <button class="preset" data-preset="python" type="button">
                         Python
@@ -307,8 +337,8 @@
                       </button>
                     </div>
                     <p class="hint">
-                      Mengisi form dengan contoh dari ekspor Colab. Kamu tetap
-                      bisa mengubah nilainya.
+                      Mengisi form dengan contoh topik. Kamu tetap bisa mengubah
+                      nilainya.
                     </p>
                   </div>
                 </section>
@@ -379,7 +409,7 @@
           <section id="view-quest" aria-labelledby="quest-title" hidden>
             <div class="page-heading">
               <div>
-                <h1 id="quest-title">Satu quest. Langkah yang terarah.</h1>
+                <h1 id="quest-title">Quest belajarmu.</h1>
                 <p>
                   Buka materinya, pelajari, lalu catat penyelesaianmu di sini.
                 </p>
@@ -395,78 +425,56 @@
           <section id="view-progres" aria-labelledby="progress-title" hidden>
             <div class="page-heading">
               <div>
-                <h1 id="progress-title">Setiap langkah tercatat.</h1>
+                <h1 id="progress-title">Pencapaian belajarmu.</h1>
                 <p>
-                  Lihat aktivitas belajar dan pencapaian dari simulasi yang kamu
-                  jalankan.
+                  Lihat aktivitas belajar dan pencapaian yang kamu jalankan.
                 </p>
               </div>
             </div>
             <div id="progress-content"></div>
           </section>
 
-          <details class="demo-tools">
-            <summary>Pengaturan demonstrasi</summary>
-            <div class="demo-tools-content">
-              <div>
-                <label for="demo-mode">Respons pencarian berikutnya</label
-                ><select id="demo-mode">
-                  <option value="normal">Normal — data contoh</option>
-                  <option value="slow">Loading lebih lama (3 detik)</option>
-                  <option value="empty">Hasil kosong (simulasi)</option>
-                  <option value="error">Kesalahan pemuatan (simulasi)</option>
-                </select>
-                <p class="hint">
-                  Deterministik. Tidak mengubah aturan nilai, XP, atau quest
-                  aktif.
-                </p>
-              </div>
-              <div>
-                <button id="reset-demo" class="button secondary" type="button">
-                  Reset demo
-                </button>
-                <p class="hint">Menghapus progres Alur saja di browser ini.</p>
-                <div id="reset-confirmation" hidden>
-                  <p>Hapus quest, XP, dan riwayat demo?</p>
-                  <button
-                    id="confirm-reset"
-                    class="button danger"
-                    type="button"
-                  >
-                    Ya, reset demo</button
-                  ><button
-                    id="cancel-reset"
-                    class="button secondary"
-                    type="button"
-                  >
-                    Batal
-                  </button>
-                </div>
-              </div>
-            </div>
-          </details>
           <footer>
             <strong>Prototipe edukatif</strong>
             <p>
               Sistem ini merupakan prototipe ITS untuk keperluan edukasi.
-              Rekomendasi tidak menggantikan penilaian pengajar. Pada mode
-              demonstrasi, nilai kuis dan interaksi belajar menggunakan data
-              simulasi.
+              Rekomendasi tidak menggantikan penilaian pengajar. Nilai kuis
+              merupakan input mandiri yang belum terverifikasi; penyelesaian
+              materi dilaporkan oleh pengguna.
             </p>
             <span>Alur · Praktikum Intelligent Tutor System</span>
           </footer>
         </main>
       </div>
     </div>
-    <dialog id="reward-dialog" aria-labelledby="reward-title" aria-describedby="reward-description">
-      <div class="reward-heading"><h2 id="reward-title">Materi selesai!</h2><button type="button" id="reward-close" class="button secondary" aria-label="Tutup hadiah">Tutup</button></div>
-      <p id="reward-description">Pencapaian dari aktivitas simulasi yang baru kamu selesaikan.</p>
-      <p id="reward-earned" class="reward-earned"></p><dl id="reward-summary"></dl>
-      <div id="reward-badges"></div><button type="button" id="reward-return" class="button primary">Kembali ke Quest</button>
+    <dialog
+      id="reward-dialog"
+      aria-labelledby="reward-title"
+      aria-describedby="reward-description"
+    >
+      <div class="reward-heading">
+        <h2 id="reward-title">Materi selesai!</h2>
+        <button
+          type="button"
+          id="reward-close"
+          class="button secondary"
+          aria-label="Tutup hadiah"
+        >
+          Tutup
+        </button>
+      </div>
+      <p id="reward-description">
+        Pencapaian dari penyelesaian yang baru kamu laporkan.
+      </p>
+      <p id="reward-earned" class="reward-earned"></p>
+      <dl id="reward-summary"></dl>
+      <div id="reward-badges"></div>
+      <button type="button" id="reward-return" class="button primary">
+        Kembali ke Quest
+      </button>
     </dialog>
     <noscript
-      >Aplikasi memerlukan JavaScript. Aktifkan JavaScript untuk mencoba mode
-      demonstrasi.</noscript
+      >Aplikasi memerlukan JavaScript. Aktifkan JavaScript untuk menggunakan aplikasi.</noscript
     >
   </body>
 </html>

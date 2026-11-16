@@ -1,5 +1,3 @@
-import { profileFromState } from "./state.js";
-import { activityLevel } from "./gamification.js";
 import { byId, element } from "./ui.js";
 
 const dialog = byId("reward-dialog");
@@ -35,18 +33,16 @@ dialog.addEventListener("close", () => {
   target.focus({ preventScroll: true });
 });
 
-export function showReward(beforeState, result, courseId) {
+export function showReward(result, courseId) {
   if (result.duplicate || result.xp_awarded <= 0) return;
-  const before = profileFromState(beforeState);
-  const after = profileFromState(result.state);
-  const oldLevel = activityLevel(before.xp);
-  const level = activityLevel(after.xp);
+  const oldLevel = result.level_before;
+  const level = result.level_after;
   returnCourseId = courseId;
   byId("reward-earned").textContent = `+${result.xp_awarded} XP`;
   const summary = byId("reward-summary");
   summary.replaceChildren();
   [
-    ["Total XP", `${after.xp} XP`],
+    ["Total XP", `${result.total_xp} XP`],
     [
       "Level aktivitas",
       oldLevel === level ? `${level}` : `${oldLevel} \u2192 ${level}`,
@@ -56,7 +52,7 @@ export function showReward(beforeState, result, courseId) {
     row.append(element("dt", "", label), element("dd", "", value));
     summary.append(row);
   });
-  const badges = after.badges.filter((badge) => !before.badges.includes(badge));
+  const badges = result.new_badges;
   const container = byId("reward-badges");
   container.replaceChildren(
     element(

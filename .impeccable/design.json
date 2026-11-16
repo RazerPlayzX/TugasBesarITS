@@ -1,395 +1,215 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-15T05:23:23.056235+00:00",
+  "generatedAt": "2026-11-16T04:06:28.263435+00:00",
   "title": "Design System: Alur",
   "extensions": {
     "colorMeta": {
       "ink": {
         "role": "neutral",
-        "displayName": "Tinta hijau",
-        "tonalRamp": [
-          "oklch(15% 0.0137 174.74)",
-          "oklch(26% 0.0234 174.74)",
-          "oklch(38% 0.0312 174.74)",
-          "oklch(49% 0.0390 174.74)",
-          "oklch(61% 0.0390 174.74)",
-          "oklch(72% 0.0312 174.74)",
-          "oklch(84% 0.0195 174.74)",
-          "oklch(95% 0.0078 174.74)"
-        ]
+        "displayName": "ink"
       },
       "muted": {
         "role": "neutral",
-        "displayName": "Hijau redup",
-        "tonalRamp": [
-          "oklch(15% 0.0085 165.31)",
-          "oklch(26% 0.0145 165.31)",
-          "oklch(38% 0.0193 165.31)",
-          "oklch(49% 0.0242 165.31)",
-          "oklch(61% 0.0242 165.31)",
-          "oklch(72% 0.0193 165.31)",
-          "oklch(84% 0.0121 165.31)",
-          "oklch(95% 0.0048 165.31)"
-        ]
+        "displayName": "muted"
       },
       "forest": {
         "role": "primary",
-        "displayName": "Pinus",
-        "tonalRamp": [
-          "oklch(15% 0.0173 176.66)",
-          "oklch(26% 0.0296 176.66)",
-          "oklch(38% 0.0395 176.66)",
-          "oklch(49% 0.0494 176.66)",
-          "oklch(61% 0.0494 176.66)",
-          "oklch(72% 0.0395 176.66)",
-          "oklch(84% 0.0247 176.66)",
-          "oklch(95% 0.0099 176.66)"
-        ]
+        "displayName": "forest"
       },
       "forest-hover": {
+        "role": "neutral",
+        "displayName": "forest-hover"
+      },
+      "accent": {
         "role": "primary",
-        "displayName": "Pinus hover",
-        "tonalRamp": [
-          "oklch(15% 0.0213 173.04)",
-          "oklch(26% 0.0364 173.04)",
-          "oklch(38% 0.0486 173.04)",
-          "oklch(49% 0.0607 173.04)",
-          "oklch(61% 0.0607 173.04)",
-          "oklch(72% 0.0486 173.04)",
-          "oklch(84% 0.0304 173.04)",
-          "oklch(95% 0.0121 173.04)"
-        ]
+        "displayName": "accent"
       },
       "mint": {
-        "role": "primary",
-        "displayName": "Mint pucat",
-        "tonalRamp": [
-          "oklch(15% 0.0048 145.47)",
-          "oklch(26% 0.0081 145.47)",
-          "oklch(38% 0.0109 145.47)",
-          "oklch(49% 0.0136 145.47)",
-          "oklch(61% 0.0136 145.47)",
-          "oklch(72% 0.0109 145.47)",
-          "oklch(84% 0.0068 145.47)",
-          "oklch(95% 0.0027 145.47)"
-        ]
+        "role": "neutral",
+        "displayName": "mint"
       },
       "lime": {
-        "role": "primary",
-        "displayName": "Hijau tunas",
-        "tonalRamp": [
-          "oklch(15% 0.0296 124.56)",
-          "oklch(26% 0.0508 124.56)",
-          "oklch(38% 0.0677 124.56)",
-          "oklch(49% 0.0846 124.56)",
-          "oklch(61% 0.0846 124.56)",
-          "oklch(72% 0.0677 124.56)",
-          "oklch(84% 0.0423 124.56)",
-          "oklch(95% 0.0169 124.56)"
-        ]
+        "role": "neutral",
+        "displayName": "lime"
       },
       "ground": {
         "role": "neutral",
-        "displayName": "Lantai terang",
-        "tonalRamp": [
-          "oklch(15% 0.0020 128.53)",
-          "oklch(26% 0.0034 128.53)",
-          "oklch(38% 0.0045 128.53)",
-          "oklch(49% 0.0057 128.53)",
-          "oklch(61% 0.0057 128.53)",
-          "oklch(72% 0.0045 128.53)",
-          "oklch(84% 0.0028 128.53)",
-          "oklch(95% 0.0011 128.53)"
-        ]
+        "displayName": "ground"
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Kertas",
-        "tonalRamp": [
-          "oklch(15% 0.0000 89.88)",
-          "oklch(26% 0.0000 89.88)",
-          "oklch(38% 0.0000 89.88)",
-          "oklch(49% 0.0000 89.88)",
-          "oklch(61% 0.0000 89.88)",
-          "oklch(72% 0.0000 89.88)",
-          "oklch(84% 0.0000 89.88)",
-          "oklch(95% 0.0000 89.88)"
-        ]
+        "displayName": "paper"
       },
       "line": {
         "role": "neutral",
-        "displayName": "Garis lembut",
-        "tonalRamp": [
-          "oklch(15% 0.0042 145.48)",
-          "oklch(26% 0.0072 145.48)",
-          "oklch(38% 0.0096 145.48)",
-          "oklch(49% 0.0120 145.48)",
-          "oklch(61% 0.0120 145.48)",
-          "oklch(72% 0.0096 145.48)",
-          "oklch(84% 0.0060 145.48)",
-          "oklch(95% 0.0024 145.48)"
-        ]
+        "displayName": "line"
       },
       "input-line": {
         "role": "neutral",
-        "displayName": "Garis isian",
-        "tonalRamp": [
-          "oklch(15% 0.0087 155.58)",
-          "oklch(26% 0.0148 155.58)",
-          "oklch(38% 0.0198 155.58)",
-          "oklch(49% 0.0247 155.58)",
-          "oklch(61% 0.0247 155.58)",
-          "oklch(72% 0.0198 155.58)",
-          "oklch(84% 0.0124 155.58)",
-          "oklch(95% 0.0049 155.58)"
-        ]
+        "displayName": "input-line"
       },
       "yellow": {
-        "role": "secondary",
-        "displayName": "Kuning refleksi",
-        "tonalRamp": [
-          "oklch(15% 0.0140 97.78)",
-          "oklch(26% 0.0239 97.78)",
-          "oklch(38% 0.0319 97.78)",
-          "oklch(49% 0.0399 97.78)",
-          "oklch(61% 0.0399 97.78)",
-          "oklch(72% 0.0319 97.78)",
-          "oklch(84% 0.0199 97.78)",
-          "oklch(95% 0.0080 97.78)"
-        ]
+        "role": "neutral",
+        "displayName": "yellow"
       },
       "error": {
         "role": "neutral",
-        "displayName": "Merah koreksi",
-        "tonalRamp": [
-          "oklch(15% 0.0545 22.34)",
-          "oklch(26% 0.0935 22.34)",
-          "oklch(38% 0.1246 22.34)",
-          "oklch(49% 0.1558 22.34)",
-          "oklch(61% 0.1558 22.34)",
-          "oklch(72% 0.1246 22.34)",
-          "oklch(84% 0.0779 22.34)",
-          "oklch(95% 0.0312 22.34)"
-        ]
+        "displayName": "error"
       },
       "error-bg": {
         "role": "neutral",
-        "displayName": "Bidang koreksi",
-        "tonalRamp": [
-          "oklch(15% 0.0054 27.28)",
-          "oklch(26% 0.0092 27.28)",
-          "oklch(38% 0.0123 27.28)",
-          "oklch(49% 0.0154 27.28)",
-          "oklch(61% 0.0154 27.28)",
-          "oklch(72% 0.0123 27.28)",
-          "oklch(84% 0.0077 27.28)",
-          "oklch(95% 0.0031 27.28)"
-        ]
+        "displayName": "error-bg"
       },
       "focus": {
         "role": "neutral",
-        "displayName": "Biru fokus",
-        "tonalRamp": [
-          "oklch(15% 0.0488 256.23)",
-          "oklch(26% 0.0836 256.23)",
-          "oklch(38% 0.1114 256.23)",
-          "oklch(49% 0.1393 256.23)",
-          "oklch(61% 0.1393 256.23)",
-          "oklch(72% 0.1114 256.23)",
-          "oklch(84% 0.0696 256.23)",
-          "oklch(95% 0.0279 256.23)"
-        ]
+        "displayName": "focus"
+      },
+      "on-dark": {
+        "role": "neutral",
+        "displayName": "on-dark"
+      },
+      "on-dark-muted": {
+        "role": "neutral",
+        "displayName": "on-dark-muted"
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "dark-line"
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "Judul halaman; 29px pada ponsel. Judul masuk clamp(30px, 3vw, 42px), 32px pada ponsel, maksimum 16ch."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Judul bagian; 18px pada ponsel. Panel awal Beranda 27px/24px; judul konteks masuk clamp(32px, 3.5vw, 50px), bobot 550, line-height 1.18."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Judul materi; 17px pada ponsel. Materi berikutnya di Beranda 25px/22px."
-      },
       "body": {
-        "displayName": "Body",
-        "purpose": "Teks dasar dan penjelasan."
+        "purpose": "Konten belajar"
       },
-      "label": {
-        "displayName": "Label",
-        "purpose": "Label isian dan status."
+      "support": {
+        "purpose": "Bantuan, validasi, deskripsi"
+      },
+      "input": {
+        "purpose": "Input mobile tanpa autozoom"
       }
     },
-    "shadows": [],
+    "shadows": [
+      {
+        "name": "dialog",
+        "value": "0 24px 72px #123c313d",
+        "purpose": "Modal reward"
+      }
+    ],
     "motion": [
       {
         "name": "duration",
-        "value": "160ms",
-        "purpose": "Transisi latar tombol dan lebar isi progres."
+        "value": "180ms",
+        "purpose": "Interaksi singkat"
+      },
+      {
+        "name": "duration-press",
+        "value": "120ms",
+        "purpose": "Interaksi singkat"
+      },
+      {
+        "name": "duration-tab",
+        "value": "140ms",
+        "purpose": "Interaksi singkat"
       },
       {
         "name": "ease",
-        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Easing tombol dan progres."
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Interaksi singkat"
       },
       {
-        "name": "progress",
-        "value": "160ms",
-        "purpose": "Transisi lebar isi progres."
+        "name": "duration-nav",
+        "value": "220ms",
+        "purpose": "Slide halaman dan indikator untuk klik/tap navbar; keyboard/reduced motion langsung."
       },
       {
-        "name": "spinner",
-        "value": "800ms linear infinite",
-        "purpose": "Rotasi spinner; reduced-motion mematikan seluruh animasi dan transisi."
+        "name": "nav-slide-distance",
+        "value": "32px",
+        "purpose": "Jarak masuk halaman, arah sesuai urutan menu."
       }
     ],
     "breakpoints": [
       {
-        "name": "wide-min",
-        "value": "1500px"
+        "name": "small",
+        "value": "440px"
       },
       {
-        "name": "compact-max",
-        "value": "1180px"
-      },
-      {
-        "name": "stack-max",
-        "value": "960px"
-      },
-      {
-        "name": "mobile-max",
+        "name": "bottom-nav",
         "value": "700px"
       },
       {
-        "name": "rail-compact-height-max",
-        "value": "820px"
+        "name": "stack",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "1000px"
+      },
+      {
+        "name": "compact-nav",
+        "value": "1100px"
       }
     ]
   },
   "components": [
     {
-      "name": "Tombol primary",
+      "name": "Button primary",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Varian tombol sesuai implementasi; danger tidak memiliki warna hover khusus.",
-      "html": "<button class=\"ds-button-primary\" type=\"button\">Cari rekomendasi</button>",
-      "css": ".ds-button-primary{min-height:44px;padding:10px 18px;border-radius:var(--control-radius);border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 13px/1.5 var(--font);text-decoration:none;cursor:pointer;transition:background var(--duration) var(--ease);background:var(--accent);color:var(--paper);}.ds-button-primary:hover:not(:disabled){background:var(--forest-hover);}.ds-button-primary:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-button-primary:disabled{cursor:not-allowed;opacity:.6;}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none!important;animation:none!important}}.ds-button-primary:active{filter:brightness(.92)}"
+      "description": "Tindakan utama",
+      "html": "<button type=\"button\" class=\"ds-control ds-primary\">Cari Materi</button>",
+      "css": ".ds-control:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-primary{background:var(--forest);color:var(--on-dark);border:1px solid var(--line);border-radius:var(--control-radius);padding:11px 18px;min-height:46px;font:700 13px var(--font);transition:background var(--duration),transform var(--duration-press)}.ds-primary:hover{background:var(--forest-hover);color:var(--on-dark)}.ds-primary:active{transform:translateY(1px)}"
     },
     {
-      "name": "Tombol secondary",
+      "name": "Button secondary",
       "kind": "button",
       "refersTo": "button-secondary",
-      "description": "Varian tombol sesuai implementasi; danger tidak memiliki warna hover khusus.",
-      "html": "<button class=\"ds-button-secondary\" type=\"button\">Lanjutkan quest</button>",
-      "css": ".ds-button-secondary{min-height:44px;padding:10px 18px;border-radius:var(--control-radius);border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 13px/1.5 var(--font);text-decoration:none;cursor:pointer;transition:background var(--duration) var(--ease);background:var(--paper);color:var(--forest);border-color:var(--input-line);}.ds-button-secondary:hover:not(:disabled){background:var(--mint);}.ds-button-secondary:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-button-secondary:disabled{cursor:not-allowed;opacity:.6;}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none!important;animation:none!important}}.ds-button-secondary:active{filter:brightness(.92)}"
+      "description": "Tindakan pendamping",
+      "html": "<button type=\"button\" class=\"ds-control ds-secondary\">Cari Materi</button>",
+      "css": ".ds-control:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-secondary{background:var(--paper);color:var(--forest);border:1px solid var(--line);border-radius:var(--control-radius);padding:11px 18px;min-height:46px;font:700 13px var(--font);transition:background var(--duration),transform var(--duration-press)}.ds-secondary:hover{background:var(--forest-hover);color:var(--on-dark)}.ds-secondary:active{transform:translateY(1px)}"
     },
     {
-      "name": "Tombol danger",
-      "kind": "button",
-      "refersTo": "button-danger",
-      "description": "Varian tombol sesuai implementasi; danger tidak memiliki warna hover khusus.",
-      "html": "<button class=\"ds-button-danger\" type=\"button\">Ya, reset demo</button>",
-      "css": ".ds-button-danger{min-height:44px;padding:10px 18px;border-radius:var(--control-radius);border:1px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 13px/1.5 var(--font);text-decoration:none;cursor:pointer;transition:background var(--duration) var(--ease);background:var(--error);color:var(--paper);}.ds-button-danger:hover:not(:disabled){background:var(--error);}.ds-button-danger:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-button-danger:disabled{cursor:not-allowed;opacity:.6;}@media(prefers-reduced-motion:reduce){.ds-button-danger{transition:none!important;animation:none!important}}.ds-button-danger:active{filter:brightness(.92)}"
-    },
-    {
-      "name": "Preset",
-      "kind": "button",
-      "refersTo": "button-preset",
-      "description": "Aksi contoh dengan ikon arah SVG.",
-      "html": "<button class=\"ds-preset\" type=\"button\">Python<svg aria-hidden=\"true\" viewBox=\"0 0 16 16\"><path d=\"M3 8h10m-4-4 4 4-4 4\"/></svg></button>",
-      "css": ".ds-preset{border:1px solid var(--line);background:var(--paper);border-radius:6px;color:var(--forest);padding:8px 12px;min-height:44px;font:13px/1.6 var(--font);display:inline-flex;align-items:center;gap:14px;cursor:pointer}.ds-preset svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.ds-preset:hover{border-color:var(--forest);background:var(--mint)}.ds-preset:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-preset:active{filter:brightness(.92)}"
-    },
-    {
-      "name": "Isian",
+      "name": "Input",
       "kind": "input",
-      "refersTo": "input",
-      "description": "Label persisten, bantuan, border validasi, dan fokus keyboard.",
-      "html": "<div class=\"ds-field\"><label for=\"ds-topic\">Topik atau keterampilan</label><input id=\"ds-topic\" type=\"text\" placeholder=\"Contoh: python programming\" aria-describedby=\"ds-topic-hint\"><p id=\"ds-topic-hint\">Gunakan topik berbahasa Inggris.</p></div>",
-      "css": ".ds-field{font:15px/1.6 var(--font);color:var(--ink)}.ds-field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}.ds-field input{width:100%;height:48px;background:var(--paper);color:var(--ink);border:1px solid var(--input-line);border-radius:var(--control-radius);padding:10px 13px;min-width:0;font:inherit;caret-color:var(--forest)}.ds-field input::placeholder{color:#65736b;opacity:1}.ds-field input[aria-invalid=\"true\"]{border-color:var(--error)}.ds-field input:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-field p{font-size:13px;color:var(--muted);margin:6px 0 0}"
+      "description": "Field berlabel permanen",
+      "html": "<label for=\"ds-topic\">Topik belajar</label><input id=\"ds-topic\" class=\"ds-control ds-input\" />",
+      "css": ".ds-control:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-input{display:block;width:100%;min-height:48px;border:1px solid var(--input-line);border-radius:var(--control-radius);background:var(--paper);color:var(--ink);font:16px var(--font);padding:11px 12px}"
     },
     {
-      "name": "Navigasi",
-      "kind": "nav",
-      "refersTo": "nav-current",
-      "description": "Empat tujuan pada rail pinus; contoh menampilkan disclosure ponsel dalam keadaan terbuka. Implementasi navigation.js mengatur aria-expanded/hidden, Escape dengan fokus kembali, dan penutupan saat rute berubah.",
-      "html": "<div class=\"ds-nav-shell\"><button class=\"ds-menu-toggle\" type=\"button\" aria-expanded=\"true\" aria-controls=\"ds-main-nav\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M4 6h16M4 12h16M4 18h16\"/></svg>Menu</button><nav id=\"ds-main-nav\" class=\"ds-nav\" aria-label=\"Navigasi contoh\"><a href=\"#beranda\" aria-current=\"page\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"m3 10 9-7 9 7v10h-7v-7h-4v7H3Z\"/></svg>Beranda</a><a href=\"#rekomendasi\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5Z\"/></svg>Rekomendasi Materi</a><a href=\"#quest\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><circle cx=\"6\" cy=\"5\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/><path d=\"M6 7v7a5 5 0 0 0 5 5h5M8 5h6a4 4 0 0 1 0 8h-3\"/></svg>Quest Saya</a><a href=\"#progres\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"M4 20h16M7 16v-5m5 5V4m5 12V8\"/></svg>Pencapaian</a></nav></div>",
-      "css": ".ds-nav-shell{background:var(--forest);padding:20px;font-family:var(--font)}.ds-nav{display:grid;gap:8px}.ds-nav a{display:flex;align-items:center;gap:12px;min-height:48px;padding:12px;color:#c9ded3;font-size:13px;line-height:1.6;text-decoration:none;border-radius:var(--control-radius)}.ds-nav a:hover{background:#235346}.ds-nav a[aria-current]{background:var(--lime);color:var(--forest);font-weight:650}.ds-nav a:focus-visible,.ds-menu-toggle:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-nav-shell svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.ds-menu-toggle{display:none}@media(max-width:700px){.ds-menu-toggle{display:inline-flex;align-items:center;gap:8px;padding:10px 12px;min-height:44px;background:transparent;color:#f4f8f1;border:1px solid #829d8b;border-radius:var(--control-radius);font:15px/1.6 var(--font);margin-bottom:12px;cursor:pointer}.ds-menu-toggle:hover,.ds-menu-toggle[aria-expanded=\"true\"]{background:var(--forest-hover)}.ds-nav{grid-template-columns:1fr;gap:4px}.ds-nav a{justify-content:start;gap:6px;padding:10px 5px;font-size:15px;min-height:46px}.ds-nav svg{width:16px;height:16px}}"
-    },
-    {
-      "name": "Tag status",
+      "name": "Tag",
       "kind": "chip",
-      "refersTo": "tag",
-      "description": "Label informasi mint; tidak interaktif.",
-      "html": "<span class=\"ds-tag\">Sudah selesai</span>",
-      "css": ".ds-tag{display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:5px;font:600 13px/1.6 var(--font);color:var(--forest);background:var(--mint)}"
+      "description": "Level atau status tertulis",
+      "html": "<span class=\"ds-tag\">Beginner</span>",
+      "css": ".ds-tag{display:inline-flex;background:var(--mint);color:var(--forest);border-radius:5px;padding:4px 9px;font:700 12px var(--font)}"
     },
     {
-      "name": "Panel kerja",
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Navigasi aktif",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigasi contoh\"><a class=\"ds-control\" href=\"#beranda\" aria-current=\"page\">Beranda</a><a class=\"ds-control\" href=\"#quest\">Quest Saya</a></nav>",
+      "css": ".ds-control:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-nav{display:flex;gap:8px}.ds-nav a{color:var(--forest);padding:12px;text-decoration:none;border-radius:8px}.ds-nav a[aria-current],.ds-nav a:hover{background:var(--mint)}"
+    },
+    {
+      "name": "Activity",
       "kind": "card",
-      "refersTo": "panel",
-      "description": "Bidang putih berborder dengan judul Manrope.",
-      "html": "<section class=\"ds-panel\"><h2>Kebutuhan belajarmu</h2><p>Mulai dari yang kamu butuhkan.</p></section>",
-      "css": ".ds-panel{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);color:var(--ink);font:15px/1.6 var(--font)}.ds-panel h2{font:650 19px/1.35 var(--font-heading);letter-spacing:-.02em;margin:0 0 24px}.ds-panel p{font-size:13px;color:var(--muted);margin:0}@media(max-width:1180px){.ds-panel{padding:22px}}@media(max-width:700px){.ds-panel{padding:22px 18px}.ds-panel h2{font-size:18px}}"
-    },
-    {
-      "name": "Baris selesai",
-      "kind": "custom",
-      "description": "Signature indeks yang berubah menjadi centang; status juga tertulis.",
-      "html": "<div class=\"ds-row\"><span class=\"ds-index\" aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\"><path d=\"m4 12 5 5L20 6\"/></svg></span><div><span class=\"ds-row-tag\">Sudah selesai</span><h3>Materi belajar</h3><a href=\"#quest\">Buka materi</a></div></div>",
-      "css": ".ds-row{display:grid;grid-template-columns:32px minmax(0,1fr);gap:16px;padding:24px 0;border-top:1px solid var(--line);color:var(--ink);font:15px/1.6 var(--font)}.ds-index{width:30px;height:30px;border-radius:50%;background:var(--forest);color:var(--paper);display:grid;place-items:center}.ds-index svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.ds-row-tag{display:inline-flex;padding:3px 9px;border-radius:5px;font-size:13px;font-weight:600;color:var(--forest);background:var(--mint)}.ds-row h3{font:600 18px/1.4 var(--font-heading);letter-spacing:-.015em;margin:7px 0 0;overflow-wrap:anywhere}.ds-row a{display:inline-flex;align-items:center;min-height:44px;color:var(--forest);font-size:13px;font-weight:600;text-underline-offset:4px;margin-top:16px}.ds-row a:hover{text-decoration-thickness:2px}.ds-row a:focus-visible{outline:3px solid var(--focus);outline-offset:4px}@media(max-width:700px){.ds-row{grid-template-columns:26px minmax(0,1fr);gap:12px}.ds-index{width:26px;height:26px}.ds-row h3{font-size:17px}}"
-    },
-    {
-      "name": "Badge diperoleh",
-      "kind": "card",
-      "refersTo": "badge-earned",
-      "description": "Bidang kuning untuk penghargaan yang sudah tercatat.",
-      "html": "<section class=\"ds-badge\"><svg aria-hidden=\"true\" viewBox=\"0 0 24 24\"><path d=\"m12 3 3 3 4 1v5l-3 4-4 2-4-2-3-4V7l4-1Zm-4 13-1 6 5-3 5 3-1-6\"/></svg><h3>Pencapaian belajar</h3><p>Aktivitas sudah tercatat.</p><span>Sudah diperoleh</span></section>",
-      "css": ".ds-badge{padding:22px 16px;text-align:center;border:1px solid transparent;border-radius:var(--radius);background:var(--yellow);color:var(--ink);font:15px/1.6 var(--font)}.ds-badge svg{width:32px;height:32px;color:#6c5c17;margin:0 auto 10px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.ds-badge h3{font:700 14px/1.4 var(--font-heading);letter-spacing:-.015em;margin:0}.ds-badge p{font-size:13px;color:var(--muted);margin:6px 0}.ds-badge span{font-size:13px;font-weight:600}@media(max-width:700px){.ds-badge{padding:20px 12px}}"
-    },
-    {
-      "name": "Aktivitas Beranda",
-      "kind": "card",
-      "refersTo": "dashboard-activity",
-      "description": "Panel teal gelap dengan aksi berikutnya. Contoh keadaan kosong; aplikasi menggantinya dengan progres dan materi berikutnya atau status selesai sesuai state belajar.",
-      "html": "<section class=\"ds-dashboard\"><h2>Belajarmu dimulai dari satu topik.</h2><p>Belum ada quest aktif. Pilih topik, isi kemampuan awal dan nilai kuis simulasi, lalu pilih materi untuk dipelajari.</p><a href=\"#rekomendasi\">Cari Materi</a><ol><li>Tentukan kebutuhan belajar</li><li>Pilih materi dari kandidat</li><li>Mulai quest dan catat progres</li></ol></section>",
-      "css": ".ds-dashboard{background:var(--forest);color:var(--on-dark);border-radius:var(--radius);padding:36px;overflow-wrap:anywhere;font:15px/1.6 var(--font)}.ds-dashboard h2{font:650 27px/1.35 var(--font-heading);letter-spacing:-.02em;max-width:24ch;margin:0}.ds-dashboard p{max-width:62ch;margin:16px 0 24px}.ds-dashboard a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;margin-top:8px;background:var(--forest);color:var(--paper);border:1px solid transparent;border-radius:var(--control-radius);font:600 13px/1.5 var(--font);text-decoration:none;transition:background var(--duration) var(--ease)}.ds-dashboard a:hover{background:var(--forest-hover)}.ds-dashboard a:active{filter:brightness(.92)}.ds-dashboard a:focus-visible{outline:3px solid var(--focus);outline-offset:4px}.ds-dashboard ol{margin:32px 0 0;padding:24px 0 0 22px;border-top:1px solid #c7d5c8}.ds-dashboard li{padding:5px 0 5px 6px}.ds-dashboard li::marker{font-weight:650;color:var(--forest)}@media(max-width:1180px){.ds-dashboard{padding:28px}}@media(max-width:700px){.ds-dashboard{padding:24px 20px}.ds-dashboard h2{font-size:24px}}@media(prefers-reduced-motion:reduce){.ds-dashboard a{transition:none}}"
+      "description": "Aktivitas utama",
+      "html": "<section class=\"ds-activity\"><h2>Lanjutkan Belajar</h2><p>Materi berikutnya dari quest aktif.</p></section>",
+      "css": ".ds-activity{padding:24px;border-radius:var(--radius);background:var(--mint);color:var(--ink);font-family:var(--font)}"
     }
   ],
   "narrative": {
-    "northStar": "Penunjuk ruang kampus",
-    "overview": "Bidang terang, navigasi hijau pinus, dan tipografi yang mudah dipindai memberi suasana tenang dan terarah. Garis tipis memisahkan kelompok; warna lembut memberi konteks tanpa mendominasi isi.",
+    "northStar": "Belajar dengan arah",
+    "overview": "Aktivitas belajar nyata dalam workspace hijau yang tenang.",
     "keyCharacteristics": [
-      "Navigasi pinus dan bidang kerja terang.",
-      "Judul Manrope, teks operasional sans yang familier.",
-      "Pembatas tipis, sudut lembut, tanpa bayangan.",
-      "Status terbaca melalui teks, bentuk, dan warna."
+      "Teks terbaca",
+      "Satu tindakan utama per state",
+      "Data API asli"
     ],
-    "rules": [
-      {
-        "name": "The Status Terbaca Rule",
-        "body": "Pasangkan warna status dengan label atau simbol; warna saja tidak menyampaikan selesai, error, atau navigasi aktif.",
-        "section": "colors"
-      },
-      {
-        "name": "The Bidang Tenang Rule",
-        "body": "Gunakan warna bidang dan pembatas untuk pengelompokan; pertahankan permukaan tanpa bayangan.",
-        "section": "elevation"
-      }
-    ],
+    "rules": [],
     "dos": [
-      "**Do** gunakan token proyek untuk warna, font, radius, dan ruang yang sudah tersedia.",
-      "**Do** pertahankan label terlihat, ring fokus, dan pesan status yang dapat dibaca.",
-      "**Do** gunakan Manrope lokal untuk judul dan SVG garis untuk ikon.",
-      "**Do** hormati reduced-motion dan pembungkusan aksi pada layar sempit."
+      "Pertahankan hierarki, fokus dan reduced motion"
     ],
     "donts": [
-      "**Don't** gunakan warna sebagai satu-satunya pembeda status.",
-      "**Don't** menambahkan bayangan dekoratif pada sistem bidang datar ini.",
-      "**Don't** mengganti font judul dengan font sistem selama Manrope tersedia.",
-      "**Don't** menjadikan komposisi satu permukaan sebagai aturan wajib semua halaman."
+      "Jangan tambahkan fitur komersial atau klaim belajar palsu"
     ]
   }
 }

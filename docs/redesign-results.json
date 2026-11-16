@@ -1,0 +1,266 @@
+[
+  {
+    "name": "Registrasi dan profil header",
+    "passed": true
+  },
+  {
+    "name": "Topik kosong",
+    "passed": true
+  },
+  {
+    "name": "Level invalid",
+    "passed": true
+  },
+  {
+    "name": "Nilai negatif",
+    "passed": true
+  },
+  {
+    "name": "Nilai lebih 100",
+    "passed": true
+  },
+  {
+    "name": "Nilai 0",
+    "passed": true
+  },
+  {
+    "name": "Nilai 100",
+    "passed": true
+  },
+  {
+    "name": "OOV hasil kosong",
+    "passed": true
+  },
+  {
+    "name": "CSRF ditolak",
+    "passed": true
+  },
+  {
+    "name": "Rekomendasi model asli",
+    "passed": true
+  },
+  {
+    "name": "Quest dibuat",
+    "passed": true
+  },
+  {
+    "name": "Popup sesuai respons reward",
+    "passed": true
+  },
+  {
+    "name": "Header sesuai API",
+    "passed": true
+  },
+  {
+    "name": "Escape dialog",
+    "passed": true
+  },
+  {
+    "name": "Reward ganda dicegah",
+    "passed": true
+  },
+  {
+    "name": "Persistensi refresh",
+    "passed": true
+  },
+  {
+    "name": "Responsif 360",
+    "passed": true
+  },
+  {
+    "name": "Responsif 768",
+    "passed": true
+  },
+  {
+    "name": "Responsif 1440",
+    "passed": true
+  },
+  {
+    "name": "Akses tanpa sesi",
+    "passed": true
+  },
+  {
+    "name": "Login kembali mempertahankan progres",
+    "passed": true
+  },
+  {
+    "name": "Tidak ada exception JavaScript",
+    "passed": true
+  },
+  {
+    "name": "Backend indisponibel menampilkan error",
+    "passed": true
+  },
+  {
+    "name": "Submit ganda dinonaktifkan",
+    "passed": true
+  },
+  {
+    "name": "Respons lambat tidak memindahkan halaman",
+    "passed": true
+  },
+  {
+    "name": "Kegagalan simpan tidak memberi hadiah",
+    "passed": true
+  },
+  {
+    "name": "Popup naik level dan badge baru",
+    "passed": true
+  },
+  {
+    "name": "Sesi kedaluwarsa kembali ke login",
+    "passed": true
+  },
+  {
+    "name": "Layout beranda 360",
+    "passed": true
+  },
+  {
+    "name": "Layout rekomendasi 360",
+    "passed": true
+  },
+  {
+    "name": "Layout quest 360",
+    "passed": true
+  },
+  {
+    "name": "Layout progres 360",
+    "passed": true
+  },
+  {
+    "name": "Sticky header 360",
+    "passed": true
+  },
+  {
+    "name": "Bottom navigation 360",
+    "passed": true
+  },
+  {
+    "name": "Layout beranda 390",
+    "passed": true
+  },
+  {
+    "name": "Layout rekomendasi 390",
+    "passed": true
+  },
+  {
+    "name": "Layout quest 390",
+    "passed": true
+  },
+  {
+    "name": "Layout progres 390",
+    "passed": true
+  },
+  {
+    "name": "Sticky header 390",
+    "passed": true
+  },
+  {
+    "name": "Bottom navigation 390",
+    "passed": true
+  },
+  {
+    "name": "Layout beranda 768",
+    "passed": true
+  },
+  {
+    "name": "Layout rekomendasi 768",
+    "passed": true
+  },
+  {
+    "name": "Layout quest 768",
+    "passed": true
+  },
+  {
+    "name": "Layout progres 768",
+    "passed": true
+  },
+  {
+    "name": "Sticky header 768",
+    "passed": true
+  },
+  {
+    "name": "Layout beranda 1440",
+    "passed": true
+  },
+  {
+    "name": "Layout rekomendasi 1440",
+    "passed": true
+  },
+  {
+    "name": "Layout quest 1440",
+    "passed": true
+  },
+  {
+    "name": "Layout progres 1440",
+    "passed": true
+  },
+  {
+    "name": "Sticky header 1440",
+    "passed": true
+  },
+  {
+    "name": "Carousel mulai posisi 1",
+    "passed": true
+  },
+  {
+    "name": "Keyboard carousel",
+    "passed": true
+  },
+  {
+    "name": "Empty state hasil nyata",
+    "passed": true
+  },
+  {
+    "name": "Slider satu kartu",
+    "passed": true
+  },
+  {
+    "name": "Modal menahan fokus",
+    "passed": true
+  },
+  {
+    "name": "Fokus kembali ke materi",
+    "passed": true
+  },
+  {
+    "name": "Nama panjang dapat diakses",
+    "passed": true
+  },
+  {
+    "name": "Layout viewport efektif zoom 200%",
+    "passed": true
+  },
+  {
+    "name": "Reduced motion",
+    "passed": true
+  },
+  {
+    "name": "Show password",
+    "passed": true
+  },
+  {
+    "name": "Hide password via keyboard",
+    "passed": true
+  },
+  {
+    "name": "Focus indicator",
+    "passed": true
+  },
+  {
+    "name": "Login 360",
+    "passed": true
+  },
+  {
+    "name": "Login 390",
+    "passed": true
+  },
+  {
+    "name": "Login 768",
+    "passed": true
+  },
+  {
+    "name": "Login 1440",
+    "passed": true
+  }
+]

@@ -5,3 +5,10 @@ __pycache__/
 *.pyc
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+.env
+.venv/
+runtime/
+*.sqlite3
+*.sqlite3-*
+.pytest_cache/

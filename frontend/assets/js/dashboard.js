@@ -1,10 +1,28 @@
-import { byId, element, routeLink, button, progressBar } from "./ui.js";
+import { byId, element, routeLink, button, progressBar, courseRows, emptyPanel } from "./ui.js";
 import { profileFromState } from "./state.js";
 import { activityLevel, questProgress } from "./gamification.js";
 
+let homeResult = null;
+let completedIds = [];
+export const homeRecommendation = () => homeResult;
+
+export function renderHomeRecommendations(result) {
+  homeResult = result ? {...result, courses: result.courses.filter(course => !completedIds.includes(course.course_id))} : null;
+  const container = byId('home-recommendations-content');
+  container.replaceChildren();
+  if (!homeResult?.courses.length) {
+    container.append(emptyPanel('Temukan materi sesuai kebutuhanmu.',
+      result?.message || 'Isi topik, level kemampuan, dan nilai kuis mandiri untuk mendapatkan rekomendasi model.'));
+    return;
+  }
+  container.append(element('p', 'source-note', `Berdasarkan topik ${homeResult.request.topic} · ${homeResult.adaptation.quest_type}. Kandidat ini terpisah dari quest aktif.`),
+    courseRows(homeResult.courses, {prefix: 'home'}));
+}
+
 export function renderDashboard(state) {
   const profile = profileFromState(state);
-  const progress = questProgress(state.quest, profile.completedIds);
+  completedIds = profile.completedIds;
+  const progress = state.progress ?? questProgress(state.quest, profile.completedIds);
   const next = state.quest?.courses.find(
     (course) => !profile.completedIds.includes(course.course_id),
   );
@@ -17,7 +35,7 @@ export function renderDashboard(state) {
       element(
         "p",
         "",
-        "Belum ada quest aktif. Pilih topik, isi kemampuan awal dan nilai kuis simulasi, lalu pilih materi untuk dipelajari.",
+        "Belum ada quest aktif. Pilih topik, isi kemampuan awal dan nilai kuis mandiri, lalu pilih materi untuk dipelajari.",
       ),
       routeLink("Cari Materi", "rekomendasi", "button primary"),
     );
@@ -41,10 +59,6 @@ export function renderDashboard(state) {
     activity.append(
       heading,
       element("p", "dashboard-topic", `Quest: ${state.quest.topic}`),
-      progressBar(
-        progress,
-        `${progress.completed} dari ${progress.total} materi selesai`,
-      ),
     );
     if (next) {
       const course = element("div", "next-lesson");
@@ -65,9 +79,12 @@ export function renderDashboard(state) {
           `Kesulitan materi: ${next.difficulty} · ${next.provider || "Penyedia belum tersedia"}`,
         ),
       );
-      course.append(
+      const actions = element('div', 'course-actions');
+      actions.append(
         button("Lanjutkan Belajar", "continue-learning", "button primary"),
+        routeLink("Cari Materi", "rekomendasi", "button secondary"),
       );
+      course.append(actions);
       activity.append(course);
     } else {
       activity.append(
@@ -79,7 +96,10 @@ export function renderDashboard(state) {
         routeLink("Cari Materi", "rekomendasi", "button primary"),
       );
     }
-    activity.append(routeLink("Lihat seluruh quest", "quest", "text-link"));
+    activity.append(
+      progressBar(progress, `${progress.completed} dari ${progress.total} materi selesai`),
+      routeLink("Lihat seluruh quest", "quest", "text-link"),
+    );
   }
 
   const summary = byId("dashboard-summary");
@@ -87,7 +107,7 @@ export function renderDashboard(state) {
   const stats = element("dl", "dashboard-stats");
   [
     ["XP terkumpul", `${profile.xp} XP`],
-    ["Level aktivitas", `${activityLevel(profile.xp)}`],
+    ["Level aktivitas", `${profile.level ?? activityLevel(profile.xp)}`],
     ["Badge diperoleh", `${profile.badges.length}`],
   ].forEach(([label, value]) => {
     const row = element("div");
@@ -118,7 +138,7 @@ export function renderDashboard(state) {
         element(
           "span",
           "hint",
-          `Materi selesai · Nilai kuis simulasi ${entry.score}/100`,
+          `Materi selesai · Nilai kuis mandiri ${entry.score}/100`,
         ),
       );
       list.append(row);
