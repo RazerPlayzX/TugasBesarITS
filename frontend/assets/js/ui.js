@@ -1,3 +1,4 @@
+import { showDescription } from './description-dialog.js';
 import { DEMO_USER } from './session.js';
 import { createCarousel } from './carousel.js';
 import {
@@ -137,11 +138,10 @@ export function courseRows(
       body.append(p);
     }
     if (course.description && course.description.length > 175) {
-      const details = element('details', 'course-detail');
-      const full = element('p', '', course.description.replace(/<[^>]*>/g, ' '));
-      full.lang = 'en';
-      details.append(element('summary', '', 'Baca deskripsi lengkap'), full);
-      body.append(details);
+      const readMore = button('Baca deskripsi lengkap', 'read-description', 'description-trigger');
+      readMore.setAttribute('aria-haspopup', 'dialog');
+      readMore.addEventListener('click', () => showDescription(course, readMore));
+      body.append(readMore);
     }
     const meta = element("div", "course-meta");
     meta.append(
@@ -501,8 +501,26 @@ function renderProgress(state, profile, progress, level) {
 }
 
 export function showFeedback(message) {
-  byId("feedback").hidden = false;
-  byId("feedback").textContent = message;
+  const toast = byId('feedback');
+  const close = button('', 'dismiss-feedback', 'toast-close');
+  const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  cross.setAttribute('viewBox', '0 0 24 24');
+  cross.setAttribute('aria-hidden', 'true');
+  const path = document.createElementNS(cross.namespaceURI, 'path');
+  path.setAttribute('d', 'm6 6 12 12M18 6 6 18');
+  cross.append(path);
+  close.append(cross);
+  close.setAttribute('aria-label', 'Tutup notifikasi');
+  close.addEventListener('click', () => {
+    const focused = toast.contains(document.activeElement);
+    toast.hidden = true;
+    if (focused) byId('main').focus({ preventScroll: true });
+  });
+  toast.replaceChildren(element('span', 'toast-message', message), close);
+  toast.hidden = false;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches)
+    toast.animate([{ opacity: 0, transform: 'translateY(-12px)' }, { opacity: 1, transform: 'translateY(0)' }],
+      { duration: 220, easing: 'cubic-bezier(.16,1,.3,1)' });
 }
 
 export function renderValidation(errors) {

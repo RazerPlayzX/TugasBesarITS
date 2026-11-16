@@ -19,6 +19,7 @@
   --input-line: #8b998e;
   --yellow: #f4edd7;
   --error: #a62d35;
+  --danger-hover: #852129;
   --error-bg: #fff0ef;
   --focus: #275ea1;
   --on-dark: #fafbf3;
@@ -43,8 +44,8 @@
   --duration-tab: 140ms;
   --duration-nav: 220ms;
   --nav-slide-distance: 32px;
-  --progress-height: 8px;
-  --progress-shimmer-duration: 1800ms;
+  --progress-height: 10px;
+  --progress-shimmer-duration: 2400ms;
   --text-body: 15px;
   --text-input: 16px;
   --text-support: 14px;

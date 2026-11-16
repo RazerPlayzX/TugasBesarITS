@@ -78,7 +78,7 @@ Carousel Beranda menyajikan hasil API dari pencarian atau rekomendasi lanjutan d
 
 ## Elevation & Depth
 
-Permukaan datar dibedakan dengan warna dan garis1px. Dialog memakai --shadow-dialog; tidak ada glassmorphism atau dekorasi gradient. Kontras dan ruang, bukan bayangan bertumpuk, membentuk hierarki.
+Permukaan datar dibedakan dengan warna dan garis1px. Dialog memakai --shadow-dialog; tidak ada glassmorphism; gradient lokal hanya pada permukaan progress untuk kedalaman yang diminta. Kontras dan ruang, bukan bayangan bertumpuk, membentuk hierarki.
 
 ## Shapes
 
@@ -92,7 +92,13 @@ Reveal: satu tombol ikon mata44px milik aplikasi, aria-label Tampilkan/Sembunyik
 
 Motion: feedback press120ms, tab140ms, transisi umum180ms, reward220ms. Klik/tap seluruh tautan internal dan tombol yang berpindah rute memunculkan halaman dengan slide horizontal32px selama220ms sesuai urutan menu; indikator aktif juga meluncur. Tidak menunggu animasi untuk memperbarui rute/fokus/state. Aksi programatis setelah respons API (misalnya Mulai quest) mengikuti input pointer pemicunya. Login menuju Beranda memakai slide, Logout memakai fade/geser vertikal8px pada form login. Keyboard, refresh dan sesi kedaluwarsa tetap langsung; reduced motion mematikan slide. Klik cepat membatalkan animasi lama dan mempertahankan tujuan terakhir. Tokens --duration-nav dan --nav-slide-distance mengendalikan gerakan. Fokus dan keyboard tanpa penundaan. Reduced motion mematikan animasi; dialog reward memakai respons transaksi API dan mengembalikan fokus setelah ditutup. Modal memakai overscroll-behavior contain. Tidak ada carousel autoplay. Scroll anchor native dan fokus input menggunakan transisi ringan; tidak ada scroll-jacking.
 
-Progress: native <progress> mempertahankan value/max dan aria-label. Track8px memakai aksen hijau, panel XP memakai lime. Lapisan dekoratif aria-hidden mengikuti lebar nilai nyata dan di-clip di dalam bagian terisi. Satu band kilau menyapu selama1800ms, dua kali (total3,6detik), lalu berhenti. Efek muncul lagi saat bar baru dirender/ditampilkan; pada0% tidak ada kilau palsu. Reduced motion mematikan shimmer. Tidak ada animasi yang mengubah persentase atau hadiah.
+Progress: native <progress> mempertahankan value/max dan aria-label. Track10px memakai aksen hijau, panel XP memakai lime. Highlight atas, bayangan inset bawah dan cekungan track memberi efek timbul ringan. Kilau dekoratif aria-hidden bergerak berulang setiap2400ms hanya di dalam bagian bar terisi; pada0% tidak ada kilau. Reduced motion mematikan loop. Persentase dan hadiah tetap dari backend.
+
+Notifikasi: feedback tindakan tampil sebagai toast fixed di tengah atas, di bawah header, maksimum600px dan gutter16px pada ponsel. Tidak menambah tinggi konten. Pesan aria-live polite tetap terbaca dan punya tombol Tutup notifikasi44px; tidak menghilang sebelum dibaca. Dialog reward tetap terpisah dan memakai transaksi API.
+
+Deskripsi: Baca deskripsi lengkap membuka native dialog maksimum740px, scroll internal pada konten panjang, teks16px/1.8. Native modal membuat background inert; Tab tetap di dialog, Escape/Tutup mengembalikan fokus pemicu. Transisi masuk220ms dan keluar140ms dinonaktifkan untuk reduced motion. Deskripsi sumber dimasukkan sebagai textContent.
+
+Logout: teks/border merah #a62d35 pada latar #fff0ef, hover menjadi bidang merah gelap #852129 dengan teks terang. Fokus keyboard tetap memakai ring biru yang sudah ada.
 
 ## Do's and Don'ts
 

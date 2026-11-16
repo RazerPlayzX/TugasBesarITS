@@ -849,6 +849,7 @@ input::placeholder {
   height: var(--progress-height);
   overflow: hidden;
   border-radius: var(--radius-small);
+  box-shadow: inset 0 2px 3px #102d2426, 0 1px 0 #ffffffcc;
 }
 progress {
   appearance: none;
@@ -866,12 +867,14 @@ progress::-webkit-progress-bar {
   background: var(--line);
 }
 progress::-webkit-progress-value {
-  background: var(--accent);
+  background: linear-gradient(180deg, #4d9870, var(--accent) 65%, #1d5039);
   border-radius: var(--radius-small);
+  box-shadow: inset 0 1px 0 #ffffff66, inset 0 -1px 2px #102d2440;
   transition: width 250ms var(--ease);
 }
 progress::-moz-progress-bar {
-  background: var(--accent);
+  background: linear-gradient(180deg, #4d9870, var(--accent) 65%, #1d5039);
+  box-shadow: inset 0 1px 0 #ffffff66, inset 0 -1px 2px #102d2440;
   border-radius: var(--radius-small);
 }
 .progress-glint {
@@ -881,6 +884,13 @@ progress::-moz-progress-bar {
   border-radius: inherit;
   pointer-events: none;
 }
+.progress-glint::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 2px 1px #ffffff55, inset 0 -2px 2px #102d2430;
+}
 .progress-glint::after {
   content: '';
   position: absolute;
@@ -888,7 +898,7 @@ progress::-moz-progress-bar {
   width: 60%;
   background: linear-gradient(105deg, transparent 15%, #ffffff99 50%, transparent 85%);
   opacity: 0;
-  animation: progress-shimmer var(--progress-shimmer-duration) ease-in-out 2;
+  animation: progress-shimmer var(--progress-shimmer-duration) linear infinite;
 }
 .progress-track.is-empty .progress-glint::after {
   animation: none;

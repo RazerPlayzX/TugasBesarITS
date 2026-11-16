@@ -1,0 +1,382 @@
+[
+  {
+    "name": "Registrasi dan profil header",
+    "passed": true
+  },
+  {
+    "name": "Topik kosong",
+    "passed": true
+  },
+  {
+    "name": "Level invalid",
+    "passed": true
+  },
+  {
+    "name": "Nilai negatif",
+    "passed": true
+  },
+  {
+    "name": "Nilai lebih 100",
+    "passed": true
+  },
+  {
+    "name": "Nilai 0",
+    "passed": true
+  },
+  {
+    "name": "Nilai 100",
+    "passed": true
+  },
+  {
+    "name": "OOV hasil kosong",
+    "passed": true
+  },
+  {
+    "name": "CSRF ditolak",
+    "passed": true
+  },
+  {
+    "name": "Rekomendasi model asli",
+    "passed": true
+  },
+  {
+    "name": "Quest dibuat",
+    "passed": true
+  },
+  {
+    "name": "Popup sesuai respons reward",
+    "passed": true
+  },
+  {
+    "name": "Header sesuai API",
+    "passed": true
+  },
+  {
+    "name": "Escape dialog",
+    "passed": true
+  },
+  {
+    "name": "Reward ganda dicegah",
+    "passed": true
+  },
+  {
+    "name": "Persistensi refresh",
+    "passed": true
+  },
+  {
+    "name": "Responsif 360",
+    "passed": true
+  },
+  {
+    "name": "Responsif 768",
+    "passed": true
+  },
+  {
+    "name": "Responsif 1440",
+    "passed": true
+  },
+  {
+    "name": "Akses tanpa sesi",
+    "passed": true
+  },
+  {
+    "name": "Login kembali mempertahankan progres",
+    "passed": true
+  },
+  {
+    "name": "Tidak ada exception JavaScript",
+    "passed": true
+  },
+  {
+    "name": "Backend indisponibel menampilkan error",
+    "passed": true
+  },
+  {
+    "name": "Submit ganda dinonaktifkan",
+    "passed": true
+  },
+  {
+    "name": "Respons lambat tidak memindahkan halaman",
+    "passed": true
+  },
+  {
+    "name": "Kegagalan simpan tidak memberi hadiah",
+    "passed": true
+  },
+  {
+    "name": "Popup naik level dan badge baru",
+    "passed": true
+  },
+  {
+    "name": "Sesi kedaluwarsa kembali ke login",
+    "passed": true
+  },
+  {
+    "name": "Cari Materi di box memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Tautan ringkasan memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Tombol Lanjutkan Belajar memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Tautan quest memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Motion tidak mengubah data",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau beranda 360",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow beranda 360",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau rekomendasi 360",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow rekomendasi 360",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau quest 360",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow quest 360",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau progres 360",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow progres 360",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau beranda 390",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow beranda 390",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau rekomendasi 390",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow rekomendasi 390",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau quest 390",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow quest 390",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau progres 390",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow progres 390",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau beranda 768",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow beranda 768",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau rekomendasi 768",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow rekomendasi 768",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau quest 768",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow quest 768",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau progres 768",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow progres 768",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau beranda 1440",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow beranda 1440",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau rekomendasi 1440",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow rekomendasi 1440",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau quest 1440",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow quest 1440",
+    "passed": true
+  },
+  {
+    "name": "Progress semantik dan kilau progres 1440",
+    "passed": true
+  },
+  {
+    "name": "Tanpa overflow progres 1440",
+    "passed": true
+  },
+  {
+    "name": "Reduced motion pada semua tautan",
+    "passed": true
+  },
+  {
+    "name": "Reduced motion mematikan kilau",
+    "passed": true
+  },
+  {
+    "name": "Progress 0 tidak memiliki kilau palsu",
+    "passed": true
+  },
+  {
+    "name": "Progress 100 tetap penuh",
+    "passed": true
+  },
+  {
+    "name": "Mulai quest setelah API memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Logout memakai transisi login",
+    "passed": true
+  },
+  {
+    "name": "Autentikasi menuju Beranda memakai slide",
+    "passed": true
+  },
+  {
+    "name": "Tidak ada exception JavaScript",
+    "passed": true
+  },
+  {
+    "name": "Deskripsi dialog memakai judul kursus asli",
+    "passed": true
+  },
+  {
+    "name": "Deskripsi penuh bukan disclosure inline",
+    "passed": true
+  },
+  {
+    "name": "Fokus tetap dalam modal",
+    "passed": true
+  },
+  {
+    "name": "Escape mengembalikan fokus pemicu",
+    "passed": true
+  },
+  {
+    "name": "Hadiah tetap sesuai transaksi API",
+    "passed": true
+  },
+  {
+    "name": "Toast atas dan layout 360",
+    "passed": true
+  },
+  {
+    "name": "Progress looping dan kedalaman 360",
+    "passed": true
+  },
+  {
+    "name": "Dialog deskripsi muat 360",
+    "passed": true
+  },
+  {
+    "name": "Toast atas dan layout 390",
+    "passed": true
+  },
+  {
+    "name": "Progress looping dan kedalaman 390",
+    "passed": true
+  },
+  {
+    "name": "Dialog deskripsi muat 390",
+    "passed": true
+  },
+  {
+    "name": "Toast atas dan layout 768",
+    "passed": true
+  },
+  {
+    "name": "Progress looping dan kedalaman 768",
+    "passed": true
+  },
+  {
+    "name": "Dialog deskripsi muat 768",
+    "passed": true
+  },
+  {
+    "name": "Toast atas dan layout 1440",
+    "passed": true
+  },
+  {
+    "name": "Progress looping dan kedalaman 1440",
+    "passed": true
+  },
+  {
+    "name": "Dialog deskripsi muat 1440",
+    "passed": true
+  },
+  {
+    "name": "Toast dapat ditutup",
+    "passed": true
+  },
+  {
+    "name": "Logout merah dan hover berubah",
+    "passed": true
+  },
+  {
+    "name": "Reduced motion mematikan kilau",
+    "passed": true
+  },
+  {
+    "name": "Reduced motion mematikan animasi dialog",
+    "passed": true
+  },
+  {
+    "name": "Tidak ada exception JavaScript",
+    "passed": true
+  }
+]

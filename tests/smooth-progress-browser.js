@@ -43,7 +43,7 @@ async page => {
         return {value:bar.value,max:bar.max,label:bar.getAttribute('aria-label'),aligned:Math.abs(filledWidth-expected)<1,
           name:style.animationName,duration:style.animationDuration,iterations:style.animationIterationCount,hidden:glint.getAttribute('aria-hidden'),clipped:getComputedStyle(glint).overflow};
       }));
-      check(`Progress semantik dan kilau ${view} ${width}`,bars.length>0 && bars.every(b=>b.max===100 && b.value>=0 && b.value<=100 && b.label && b.aligned && b.hidden==='true' && b.clipped==='hidden' && (b.value===0 ? b.name==='none' : b.name==='progress-shimmer' && b.duration==='1.8s' && b.iterations==='2')));
+      check(`Progress semantik dan kilau ${view} ${width}`,bars.length>0 && bars.every(b=>b.max===100 && b.value>=0 && b.value<=100 && b.label && b.aligned && b.hidden==='true' && b.clipped==='hidden' && (b.value===0 ? b.name==='none' : b.name==='progress-shimmer' && b.duration==='2.4s' && b.iterations==='infinite')));
       check(`Tanpa overflow ${view} ${width}`,!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth));
     }
   }

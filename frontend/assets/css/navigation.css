@@ -1,3 +1,16 @@
+#exit-demo {
+  color: var(--error);
+  border-color: var(--error);
+  background: var(--error-bg);
+  transition: color var(--duration), background-color var(--duration), transform var(--duration-press);
+}
+#exit-demo:hover {
+  color: var(--on-dark);
+  background: var(--danger-hover);
+  border-color: var(--danger-hover);
+}
+#exit-demo:active { transform: scale(.97); }
+
 .brand {
   display: flex;
   align-items: center;

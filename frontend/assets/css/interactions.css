@@ -68,25 +68,6 @@
   margin-bottom: 20px;
 }
 
-.course-detail {
-  font-size: var(--text-support);
-  color: var(--muted);
-  margin: 12px 0;
-}
-
-.course-detail summary {
-  cursor: pointer;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.course-detail p {
-  line-height: 1.8;
-}
-
 .carousel-track .course-actions {
   align-items: start;
 }
@@ -95,7 +76,8 @@
   overflow-wrap: anywhere;
 }
 
-#reward-dialog {
+#reward-dialog,
+#description-dialog {
   width: min(520px, calc(100% - 32px));
   max-height: calc(100dvh - 32px);
   overflow: auto;
@@ -108,13 +90,78 @@
   box-shadow: var(--shadow-dialog);
 }
 
-#reward-dialog::backdrop {
+#reward-dialog::backdrop,
+#description-dialog::backdrop {
   background: #102d24aa;
 }
 
-#reward-dialog[open] {
+#reward-dialog[open],
+#description-dialog[open] {
   animation: reward-in 220ms var(--ease);
 }
+
+#description-dialog {
+  width: min(740px, calc(100% - 32px));
+}
+#description-dialog h2 {
+  font-size: clamp(20px, 4vw, 26px);
+  overflow-wrap: anywhere;
+}
+#description-dialog .reward-heading { align-items: flex-start; }
+#description-dialog .reward-heading button { flex-shrink: 0; }
+.description-content {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 24px 0 0;
+}
+.description-trigger {
+  display: block;
+  padding: 10px 0;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: var(--forest);
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: var(--text-support);
+}
+.description-trigger:hover { color: var(--accent); }
+
+.feedback-toast {
+  position: fixed;
+  z-index: 30;
+  top: calc(100px + env(safe-area-inset-top, 0px));
+  left: 50%;
+  translate: -50% 0;
+  width: min(600px, calc(100% - 32px));
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 16px 16px 20px;
+  border: 1px solid var(--input-line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 10px 32px #102d2426, 0 2px 6px #102d2414;
+  font-size: var(--text-body);
+}
+.toast-message { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.toast-close {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--control-radius);
+  color: var(--forest);
+  background: var(--mint);
+  font-size: 24px;
+  line-height: 1;
+}
+.toast-close svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; vertical-align: middle; }
+.toast-close:hover { background: var(--line); }
 
 .reward-heading {
   display: flex;
@@ -192,14 +239,16 @@
     padding-inline: 10px;
   }
 
-  #reward-dialog {
+  #reward-dialog,
+  #description-dialog {
     padding: 24px;
   }
 
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #reward-dialog[open] {
+  #reward-dialog[open],
+  #description-dialog[open] {
     animation: none;
   }
 
