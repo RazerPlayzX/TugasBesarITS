@@ -9,6 +9,7 @@
 html {
   scrollbar-color: var(--input-line) var(--ground);
   scroll-padding-top: 110px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -53,6 +54,7 @@ a {
 
 button,input,select {
   font: inherit;
+  transition: border-color var(--duration), background-color var(--duration);
 }
 
 button {
@@ -64,7 +66,7 @@ button,a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button: disabled {
+button:disabled {
   cursor: not-allowed;
   opacity: .5;
 }
@@ -74,7 +76,7 @@ button: disabled {
   outline-offset: 4px;
 }
 
-main: focus {
+main:focus {
   outline: none;
 }
 
@@ -491,7 +493,7 @@ input,select {
   caret-color: var(--accent);
 }
 
-input: :placeholder {
+input::placeholder {
   color: var(--muted);
   opacity: 1;
 }
@@ -841,30 +843,61 @@ input: :placeholder {
 
 }
 
+/* Native progress remains the source of its accessible value and filled area. */
+.progress-track {
+  position: relative;
+  height: var(--progress-height);
+  overflow: hidden;
+  border-radius: var(--radius-small);
+}
 progress {
   appearance: none;
   display: block;
   width: 100%;
-  height: 6px;
+  height: 100%;
+  margin: 0;
   overflow: hidden;
   border: 0;
-  border-radius: var(--radius-small);
+  border-radius: inherit;
   background: var(--line);
   color: var(--accent);
 }
-
-progress: :-webkit-progress-bar {
+progress::-webkit-progress-bar {
   background: var(--line);
 }
-
-progress: :-webkit-progress-value {
+progress::-webkit-progress-value {
   background: var(--accent);
   border-radius: var(--radius-small);
   transition: width 250ms var(--ease);
 }
-
-progress: :-moz-progress-bar {
+progress::-moz-progress-bar {
   background: var(--accent);
+  border-radius: var(--radius-small);
+}
+.progress-glint {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.progress-glint::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 60%;
+  background: linear-gradient(105deg, transparent 15%, #ffffff99 50%, transparent 85%);
+  opacity: 0;
+  animation: progress-shimmer var(--progress-shimmer-duration) ease-in-out 2;
+}
+.progress-track.is-empty .progress-glint::after {
+  animation: none;
+}
+@keyframes progress-shimmer {
+  0% { transform: translateX(-160%); opacity: 0; }
+  15% { opacity: 0.8; }
+  75% { opacity: 0.8; }
+  100% { transform: translateX(260%); opacity: 0; }
 }
 
 .progress-label {
@@ -966,6 +999,10 @@ progress: :-moz-progress-bar {
 
 .xp-panel progress::-moz-progress-bar {
   background: var(--lime);
+}
+
+.xp-panel progress::-webkit-progress-bar {
+  background: var(--dark-line);
 }
 
 .progress-detail {

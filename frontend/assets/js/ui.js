@@ -86,7 +86,14 @@ export function progressBar(progress, label) {
   bar.max = 100;
   bar.value = progress.percent;
   bar.setAttribute("aria-label", label);
-  wrap.append(caption, bar);
+  const track = element('div', 'progress-track');
+  const glint = element('span', 'progress-glint');
+  glint.setAttribute('aria-hidden', 'true');
+  // The decoration follows the semantic progress value; it never advances on its own.
+  glint.style.width = `${bar.value}%`;
+  track.classList.toggle('is-empty', bar.value === 0);
+  track.append(bar, glint);
+  wrap.append(caption, track);
   return wrap;
 }
 

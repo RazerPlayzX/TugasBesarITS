@@ -43,6 +43,8 @@
   --duration-tab: 140ms;
   --duration-nav: 220ms;
   --nav-slide-distance: 32px;
+  --progress-height: 8px;
+  --progress-shimmer-duration: 1800ms;
   --text-body: 15px;
   --text-input: 16px;
   --text-support: 14px;

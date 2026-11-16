@@ -54,8 +54,16 @@ export function createNavigationMotion(menu, views) {
     pageAnimation?.cancel();
     pageAnimation = null;
     positionIndicator(animate);
-    if (!animate || reducedMotion.matches || !views.includes(view) || !views.includes(previous) || view === previous) return;
+    if (!animate || reducedMotion.matches || !previous || view === previous) return;
 
+    if (view === 'login') {
+      pageAnimation = document.getElementById('login-main').animate([
+        { transform: 'translateY(8px)', opacity: 0.65 },
+        { transform: 'translateY(0)', opacity: 1 },
+      ], { duration, easing });
+      return;
+    }
+    if (!views.includes(view)) return;
     const direction = views.indexOf(view) > views.indexOf(previous) ? 1 : -1;
     pageAnimation = document.getElementById(`view-${view}`).animate([
       { transform: `translateX(${direction * distance}px)`, opacity: 0.65 },

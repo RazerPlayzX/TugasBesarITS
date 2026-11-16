@@ -352,13 +352,14 @@ byId("quest-content").addEventListener("submit", async (event) => {
 });
 
 
-async function restoreSession() {
+async function restoreSession({ navigate = false } = {}) {
   const account = await api('me');
   activeUser = account.user;
   commit(account.state);
-  navigation.render();
+  if (navigate) navigation.go('beranda');
+  else navigation.render();
 }
-function leaveSession() {
+function leaveSession(options) {
   requestVersion++;
   completionVersion++;
   activeUser = null;
@@ -370,10 +371,10 @@ function leaveSession() {
   completionBusy = false;
   renderResults(null);
   renderHomeRecommendations(null);
-  navigation.go('login');
+  navigation.go('login', options);
 }
 document.addEventListener('session-expired', () => {
-  leaveSession();
+  leaveSession({ animate: false });
   byId('session-notice').hidden = false;
   byId('session-notice').textContent = 'Sesi berakhir. Masuk kembali untuk melanjutkan.';
 });
@@ -394,8 +395,7 @@ byId('auth-form').addEventListener('submit', async event => {
     await api(registration ? 'register' : 'login', body);
     byId('auth-password').value = '';
     concealPassword();
-    await restoreSession();
-    navigation.go('beranda');
+    await restoreSession({ navigate: true });
   } catch (error) {
     notice.textContent = error.message;
     notice.hidden = false;

@@ -12,6 +12,9 @@ export function createNavigation(session) {
   const menu = byId("main-navigation");
   const motion = createNavigationMotion(menu, Object.keys(VIEWS));
   let activeView = null;
+  let pointerNavigation = false;
+  document.addEventListener('pointerdown', () => { pointerNavigation = true; }, true);
+  document.addEventListener('keydown', () => { pointerNavigation = false; }, true);
   function render({ animate = false } = {}) {
     const requested = location.hash.slice(1);
     const view = session.isActive()
@@ -41,9 +44,9 @@ export function createNavigation(session) {
     activeView = view;
   }
 
-  function go(view, options) {
+  function go(view, { animate = pointerNavigation } = {}) {
     if (location.hash !== `#${view}`) history.pushState(null, "", `#${view}`);
-    render(options);
+    render({ animate });
   }
 
   // Intersepsi rute juga menangani klik tautan ke halaman yang sudah aktif.
@@ -65,7 +68,7 @@ export function createNavigation(session) {
     const view = link.hash.slice(1);
     if (view in VIEWS) {
       event.preventDefault();
-      go(view, { animate: menu.contains(link) && event.detail > 0 });
+      go(view, { animate: event.detail > 0 });
     }
   });
   window.addEventListener("hashchange", () => {

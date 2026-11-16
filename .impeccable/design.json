@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-16T04:06:28.263435+00:00",
+  "generatedAt": "2026-11-16T04:26:10.941362+00:00",
   "title": "Design System: Alur",
   "extensions": {
     "colorMeta": {
@@ -119,12 +119,17 @@
       {
         "name": "duration-nav",
         "value": "220ms",
-        "purpose": "Slide halaman dan indikator untuk klik/tap navbar; keyboard/reduced motion langsung."
+        "purpose": "Slide seluruh navigasi internal pointer220ms; keyboard/reduced motion langsung."
       },
       {
         "name": "nav-slide-distance",
         "value": "32px",
         "purpose": "Jarak masuk halaman, arah sesuai urutan menu."
+      },
+      {
+        "name": "progress-shimmer-duration",
+        "value": "1800ms",
+        "purpose": "Dua sapuan kilau di dalam bagian bar yang terisi; reduced motion mematikan efek."
       }
     ],
     "breakpoints": [
@@ -194,6 +199,13 @@
       "description": "Aktivitas utama",
       "html": "<section class=\"ds-activity\"><h2>Lanjutkan Belajar</h2><p>Materi berikutnya dari quest aktif.</p></section>",
       "css": ".ds-activity{padding:24px;border-radius:var(--radius);background:var(--mint);color:var(--ink);font-family:var(--font)}"
+    },
+    {
+      "name": "Progress",
+      "kind": "custom",
+      "description": "Contoh statis progress semantik dengan track8px; animasi runtime berasal dari ui.js/styles.css.",
+      "html": "<label for=\"ds-progress\">Contoh progres komponen: 40%</label><progress id=\"ds-progress\" class=\"ds-progress\" value=\"40\" max=\"100\">40%</progress>",
+      "css": ".ds-progress{display:block;width:100%;height:var(--progress-height);appearance:none;background:var(--line);color:var(--accent);border:0;border-radius:var(--radius-small)}.ds-progress::-webkit-progress-bar{background:var(--line)}.ds-progress::-webkit-progress-value{background:var(--accent);border-radius:var(--radius-small)}.ds-progress::-moz-progress-bar{background:var(--accent)}"
     }
   ],
   "narrative": {

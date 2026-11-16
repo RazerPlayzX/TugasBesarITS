@@ -16,7 +16,7 @@ Materi selesai20XP + bonus50 jika>=90,30 jika>=80,20 jika>=60,10 jika<60. Level 
 
 ## Frontend terbaru
 
-Tab Masuk/Buat akun dan satu ikon reveal password, backend auth tetap. Dashboard mobile: header akun/level/XP, aktivitas dengan satu tombol Cari Materi di dalam box (tanpa kolom search dashboard), carousel hasil API, ringkasan, riwayat nyata. Shortcut tiga tombol dan CTA pencarian duplikat di dashboard dihapus; menu utama tetap pada navbar. Klik/tap menu utama memiliki slide halaman/indikator singkat tanpa mengubah state; keyboard dan reduced motion tetap langsung. Hasil rekomendasi ditampilkan setelah input kebutuhan, tidak dibuat otomatis dari kueri palsu. Refresh memulihkan akun/quest/progres; kandidat pencarian di memori dapat kosong setelah refresh. Desktop mempertahankan navbar sticky/menu tengah/akun kanan; ponsel bottom navigation.
+Tab Masuk/Buat akun dan satu ikon reveal password, backend auth tetap. Dashboard mobile: header akun/level/XP, aktivitas dengan satu tombol Cari Materi di dalam box (tanpa kolom search dashboard), carousel hasil API, ringkasan, riwayat nyata. Shortcut tiga tombol dan CTA pencarian duplikat di dashboard dihapus; menu utama tetap pada navbar. Klik/tap seluruh navigasi internal (tautan dan tombol, termasuk aksi setelah API) memiliki slide halaman/indikator singkat tanpa mengubah state; progress bar memiliki kilau dekoratif singkat yang mengikuti nilai asli; keyboard dan reduced motion tetap langsung. Hasil rekomendasi ditampilkan setelah input kebutuhan, tidak dibuat otomatis dari kueri palsu. Refresh memulihkan akun/quest/progres; kandidat pencarian di memori dapat kosong setelah refresh. Desktop mempertahankan navbar sticky/menu tengah/akun kanan; ponsel bottom navigation.
 
 ## Batas dan etika
 

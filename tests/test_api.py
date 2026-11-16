@@ -16,6 +16,9 @@ CREDS = {'email': 'student@example.test', 'password': 'test-password-123'}
 @pytest.fixture
 def client(tmp_path, monkeypatch):
     monkeypatch.setenv('ITS_DB', str(tmp_path / 'test.sqlite3'))
+    # Isolate test sessions from a developer's LAN/HTTPS configuration.
+    monkeypatch.setenv('ITS_ORIGIN', ORIGIN['Origin'])
+    monkeypatch.setenv('ITS_COOKIE_SECURE', 'false')
     with TestClient(app) as c:
         c.headers.update(ORIGIN)
         yield c
